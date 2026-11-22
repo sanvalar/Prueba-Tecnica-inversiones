@@ -1,0 +1,10 @@
+venv/
+.venv/
+.env
+data/*
+!data/.gitkeep
+*.csv
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+db.sqlite3
