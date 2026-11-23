@@ -35,22 +35,34 @@ def construir_features(df: pd.DataFrame) -> pd.DataFrame:
     f["pct_rf"] = (f["cop_renta_fija"] / tot).fillna(0)
     f["pct_rv"] = (f["cop_renta_variable"] / tot).fillna(0)
     f["pct_fic"] = (f["cop_fics"] / tot).fillna(0)
-    f["score_cop"] = (f["pct_rf"] * RIESGO_COP["rf"]
-                      + f["pct_fic"] * RIESGO_COP["fic"]
-                      + f["pct_rv"] * RIESGO_COP["rv"])
+
+    # Puntaje local por clase: sirve de respaldo si la vista no trae score_cop
+    score_por_clase = (f["pct_rf"] * RIESGO_COP["rf"]
+                       + f["pct_fic"] * RIESGO_COP["fic"]
+                       + f["pct_rv"] * RIESGO_COP["rv"])
+    if "score_cop" in f.columns:
+        # puntaje por activo calculado en SQL; si falta para algún cliente, se usa el de clase
+        f["score_cop"] = pd.to_numeric(f["score_cop"], errors="coerce").fillna(score_por_clase)
+    else:
+        f["score_cop"] = score_por_clase
+
     f["log_total_cop"] = np.log10(f["total_cop"].clip(lower=1))
     c = f["concentracion_max_cop"]
     f["concentracion"] = np.where(c > 1.0, c / 100.0, c)
 
-    # riesgo USD: solo saldos positivos (los deudores de liquidez distorsionarían)
-    pos = {k: f[col].clip(lower=0) for k, col in
-           [("liq", "usd_liquidez"), ("rf", "usd_renta_fija"),
-            ("fondos", "usd_fondos"), ("acc", "usd_acciones_etfs")]}
-    base = sum(pos.values())
-    f["score_usd"] = np.where(
-        base > 0,
-        sum(pos[k] * RIESGO_USD[k] for k in pos) / base.replace(0, np.nan),
-        np.nan)
+    # riesgo USD: si la vista trae score_usd (por activo, calculado en SQL) se usa;
+    # si no, se calcula por tipo de activo con saldos positivos
+    if "score_usd" in f.columns:
+        f["score_usd"] = pd.to_numeric(f["score_usd"], errors="coerce")
+    else:
+        pos = {k: f[col].clip(lower=0) for k, col in
+               [("liq", "usd_liquidez"), ("rf", "usd_renta_fija"),
+                ("fondos", "usd_fondos"), ("acc", "usd_acciones_etfs")]}
+        base = sum(pos.values())
+        f["score_usd"] = np.where(
+            base > 0,
+            sum(pos[k] * RIESGO_USD[k] for k in pos) / base.replace(0, np.nan),
+            np.nan)
     return f
 
 

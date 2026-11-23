@@ -25,20 +25,24 @@ def main():
 
     f = construir_features(df)
     f, tabla_k, k = segmentar(f)
-    print(tabla_k.to_string(index=False)); print("k elegido:", k)
+    print(tabla_k.to_string(index=False))
+    print("k elegido:", k)
 
     nombres = f.groupby("segmento_id").apply(nombrar_segmento)
     f["segmento"] = f["segmento_id"].map(nombres)
     f = alinear_perfil(f)
     f["recomendacion"] = f.apply(recomendar, axis=1)
 
-    cols = ["cliente_id", "segmento", "perfil_riesgo", "perfil_implicito", "estado_perfil",
-            "score_cop", "score_usd", "recomendacion"]
+    cols = ["cliente_id", "segmento", "perfil_riesgo", "perfil_implicito",
+            "estado_perfil", "score_cop", "score_usd", "recomendacion"]
     f[cols].to_sql("resultado_modelo_cliente", engine, if_exists="replace", index=False)
 
-    print(f["segmento"].value_counts(), "\n")
+    print("\nSegmentos:")
+    print(f["segmento"].value_counts())
+    print("\nPerfil declarado vs. estado:")
     print(pd.crosstab(f["perfil_riesgo"], f["estado_perfil"]))
-
-
+    
 if __name__ == "__main__":
     main()
+    
+    
