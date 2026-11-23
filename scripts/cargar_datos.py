@@ -152,6 +152,9 @@ def main():
     for nombre in TABLAS:
         cargar_tabla(engine, nombre)
 
+    print("Creando vistas de limpieza y portafolio...")
+    for archivo in sorted(SQL_DIR.glob("0[2-9]_*.sql")):
+        ejecutar_archivo_sql(engine, archivo)
     print("Listo.")
 
 
