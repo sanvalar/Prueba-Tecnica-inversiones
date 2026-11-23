@@ -1,0 +1,50 @@
+HALLAZGOS
+
+- ¿Cuántos segmentos hay y cómo se llaman? ¿Qué los diferencia?
+R:/ Hay 4 segmentos:
+1. FICs, patrimonio medio, habían 13, 100% en FICs y CDT. Puntaje de riesgo entre 1,0 y 2,5
+2. Renta fija, patrimonio alto, habían 2, son portafolios grandes con renta fija. Puntaje 1,5 a 1,7
+3. Renta variable, patrimonio medio, habían 2, son acciones con montos mayores, puntaje 4,5
+4. Renta variable, patrimonio bajo, habían 13, 100% en acciones. Puntaje de riesgo 4,5
+
+
+- ¿Cuántos clientes tienen el perfil sin definir? ¿Qué perfil sugiere el modelo para ellos? (columna perfil_implicito)
+R:/ 15 de 30 clientes (50 %) tienen el perfil SIN DEFINIR. El perfil que sugiere su portafolio:
+
+- 11 clientes: AGRESIVO (todos con 100 % en acciones)
+- 4 clientes: CONSERVADOR (todos con 100 % en FICs)
+
+Ningún cliente sin perfil se clasifica como moderado: sus portafolios son de un
+solo tipo de activo, así que caen en los extremos.
+
+- De los que tienen perfil definido, ¿cuántos están alineados, cuántos son más riesgosos y cuántos más conservadores?
+
+Estado alineado: Son 5 clientes (4 conservadores y 1 agresivo)
+Estado más conservador que su perfil: Son 7 clientes (6 moderados y 1 agresivo)
+Estado más riesgoso que su perfil: Son 3 y todos son moderados
+
+Solo 1 de cada 3 clientes con perfil tiene un portafolio coherente con él.
+Los 7 "más conservadores" son una oportunidad comercial (espacio para más riesgo);
+los 3 "más riesgosos" requieren revisar su exposición: son moderados con 100 % en acciones.
+
+
+- ¿Qué clientes tienen alertas de concentración?
+R:/ 24 de 30 clientes tienen la alerta (≥80 % en una posición y 2 o menos posiciones):
+12 del segmento de renta variable de patrimonio bajo, 11 del de FICs y 1 de renta fija.
+El umbral es poco selectivo en esta base, porque casi todos los clientes tienen
+una sola posición. Los 6 clientes sin alerta son los más diversificados.
+
+
+- ¿Cuántos clientes no tienen portafolio internacional y tienen patrimonio local alto?
+R:/ 6 clientes tienen más de $50 millones COP en local y ningún portafolio USD.
+Cinco de ellos tienen el identificador truncado por Excel, así que podrían tener USD
+sin que se pueda cruzar. En total, 18 de los 30 clientes no tienen portafolio USD.
+
+- Un caso concreto: CLIENTE 10039616197
+
+- Perfil declarado: SIN DEFINIR.
+- Local (15/05/2024): $18.357.700 COP, 100 % renta variable en 3 posiciones. Puntaje 4,5 (agresivo).
+- Internacional (30/05/2024): US$ 5.610,22. Puntaje USD 1,5 (bajo).
+- El modelo sugiere completar su perfil: su parte local se comporta como agresiva.
+- Matiz: el portafolio internacional es mucho más conservador que el local. Mirar solo
+  el portafolio local sobreestima su riesgo total.
