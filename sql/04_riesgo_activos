@@ -3,8 +3,8 @@
 
 DROP VIEW  IF EXISTS v_cliente_features;
 DROP VIEW  IF EXISTS v_riesgo_local_cliente;
-DROP VIEW  IF EXISTS v_riesgo_usd_posicion;
 DROP VIEW  IF EXISTS v_riesgo_usd_cliente;
+DROP VIEW  IF EXISTS v_riesgo_usd_posicion;
 DROP TABLE IF EXISTS riesgo_clase_local;
 DROP TABLE IF EXISTS riesgo_activo_local;
 DROP TABLE IF EXISTS riesgo_usd_manual;
@@ -26,7 +26,7 @@ CREATE TABLE riesgo_activo_local (
     fuente     TEXT
 );
 INSERT INTO riesgo_activo_local VALUES
-    ('1019', 1.0, 'provisional: FIC de liquidez'),
+    ('1019', 1.0, 'Ficha técnica Renta Liquidez 31/10/2026: AAAf/S1, vol 0,226 %'),
     ('1007', 1.0, 'provisional: FIC tipo cuenta'),
     ('1000', 1.0, 'provisional: CDT Bancolombia'),
     ('1001', 1.5, 'provisional: CDT Tuya'),
