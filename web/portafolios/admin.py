@@ -1,3 +1,10 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import ConsultaSQL
+
+
+@admin.register(ConsultaSQL)
+class ConsultaSQLAdmin(admin.ModelAdmin):
+    list_display = ("nombre", "titulo", "activa", "actualizado")
+    list_filter = ("activa",)
+    search_fields = ("nombre", "titulo", "sql")
