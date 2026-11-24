@@ -87,3 +87,24 @@ Estos registros aparecen en los datos pero no se pudieron caracterizar. Se les a
 - Código 1022, no catalogado - renta variable, 4.0 Millones COP, 1 Cliente.
 - Sin código, sin clasificar - renta variable , 4.7 Millones COP, 1 Cliente.
 
+ACCIONES LOCALES
+
+Activo (cod)	Ticker	Retorno 1a	Volatilidad	Caída máx.	Clientes	Valor (COP)
+Ecopetrol (1004)	ECOPETROL.CL	35,3 %	42,8 %	−21,1 %	11	28.526.720
+ISA (1012)	ISA.CL	4,6 %	43,5 %	−30,7 %	2	24.646.800
+Pref. Grupo Sura (1017)	PFGRUPSURA.CL	39,5 %	36,7 %	−24,3 %	2	14.152.500
+Celsia (1002)	CELSIA.CL	−12,1 %	36,6 %	−29,7 %	1	12.870.000
+Pref. Bancolombia (1014)	PFCIBEST.CL	38,0 %	35,4 %	−21,9 %	2	11.249.300
+Grupo Bolívar (1011)	GRUBOLIVAR.CL	−14,8 %	31,9 %	−28,1 %	1	9.490.000
+Cemargos (1003)	CEMARGOS.CL	−5,9 %	35,6 %	−28,4 %	1	7.097.500
+Pref. Corficolombiana (1016)	PFCORFICOL.CL	3,8 %	31,0 %	−18,3 %	1	6.048.840
+ETB (1005) *	ETB.CL	100,0 %	73,7 %	−35,6 %	4	444.700
+
+
+Notas
+•	Bancolombia cambió de nombre a Cibest en 2025; su preferencial pasó de PFBCOLOM a PFCIBEST. En la base de datos aparece con el nombre anterior.
+•	ETB: acción de baja liquidez; el retorno y la volatilidad no son representativos. Peso marginal.
+•	Riesgo asignado a todas: 4,5 / 5 (renta variable). Justificación: volatilidad anual de 31 % a 44 %, frente a 0,2 % 1,3 % de los FICs de liquidez y renta fija revisados.
+•	Qué las mueve (referencia general): Ecopetrol, precio del petróleo y dólar; ISA y Celsia, tasas de interés y regulación del sector eléctrico; Cemargos, ciclo de la construcción; Grupo Sura, Bolívar, Cibest y Corficolombiana, sector financiero y tasas.
+•	Limitación: un año de historia describe el pasado reciente y no predice el futuro.
+
