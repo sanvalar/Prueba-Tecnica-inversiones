@@ -79,6 +79,53 @@
       </div>
     </div>
 
+    {% if modelo %}
+      {% with m=modelo.0 %}
+      <div class="card mb-4">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <h2 class="h5 mb-0">Análisis del modelo</h2>
+            <span class="badge
+              {% if 'ALINEADO' in m.estado_perfil %}bg-success
+              {% elif 'RIESGOSO' in m.estado_perfil %}bg-danger
+              {% elif 'CONSERVADOR' in m.estado_perfil %}bg-warning text-dark
+              {% else %}bg-secondary{% endif %}">
+              {{ m.estado_perfil }}
+            </span>
+          </div>
+
+          <p class="mb-1"><strong>Segmento:</strong> {{ m.segmento }}</p>
+          <p class="mb-3">
+            <strong>Perfil declarado:</strong> {{ m.perfil_riesgo|default:"Sin definir" }}
+            · <strong>Perfil sugerido:</strong> {{ m.perfil_implicito }}
+          </p>
+
+          {% if m.score_cop %}
+            <p class="mb-1 small">Riesgo del portafolio en pesos: {{ m.score_cop|floatformat:1 }} / 5</p>
+            <div class="progress mb-2" style="height: 8px;">
+              <div class="progress-bar" style="width: {% widthratio m.score_cop 5 100 %}%"></div>
+            </div>
+          {% endif %}
+          {% if m.score_usd %}
+            <p class="mb-1 small">Riesgo del portafolio en dólares: {{ m.score_usd|floatformat:1 }} / 5</p>
+            <div class="progress mb-3" style="height: 8px;">
+              <div class="progress-bar bg-info" style="width: {% widthratio m.score_usd 5 100 %}%"></div>
+            </div>
+          {% endif %}
+
+          <p class="mb-2"><strong>Recomendación:</strong> {{ m.recomendacion }}</p>
+          <p class="text-muted small mb-0">
+            Resultado de un modelo descriptivo basado en 30 clientes. Es un insumo para el asesor, no una decisión de inversión.
+          </p>
+        </div>
+      </div>
+      {% endwith %}
+    {% else %}
+      <p class="text-muted small mb-4">
+        Sin resultado del modelo para este cliente. Ejecuta <code>python scripts/correr_modelo.py</code>.
+      </p>
+    {% endif %}
+
     <h2 class="h4 mt-4">Portafolio local (COP)</h2>
     <div class="row">
       <div class="col-lg-6">{{ grafico_cop_dona|safe }}</div>

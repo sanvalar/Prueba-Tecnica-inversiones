@@ -36,6 +36,15 @@ def portafolio(request):
                     usd_tipo, "tipo_activo", "valor_usd", "Composición por tipo de activo (USD)")
                 contexto["grafico_usd_barras"] = graficos.barras(
                     usd_detalle, "nombre_activo", "valor_usd", "Mayores posiciones (USD)")
+
+            # Resultado del modelo analítico. Va aparte: si la tabla
+            # resultado_modelo_cliente no existe (no se ha corrido
+            # scripts/correr_modelo.py) o la consulta falla, el resto de la
+            # página sigue funcionando y la plantilla muestra un aviso.
+            try:
+                contexto["modelo"] = ejecutar("modelo_cliente", params)
+            except Exception:
+                contexto["modelo"] = []
     except ConsultaNoDisponible as error:
         contexto["error"] = str(error)
 
