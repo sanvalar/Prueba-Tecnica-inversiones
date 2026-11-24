@@ -27,12 +27,12 @@ CREATE TABLE riesgo_activo_local (
 );
 INSERT INTO riesgo_activo_local VALUES
     ('1019', 1.0, 'Ficha técnica Renta Liquidez 31/10/2026: AAAf/S1, vol 0,226 %'),
-    ('1007', 1.0, 'provisional: FIC tipo cuenta'),
-    ('1000', 1.0, 'provisional: CDT Bancolombia'),
-    ('1001', 1.5, 'provisional: CDT Tuya'),
-    ('1008', 2.0, 'provisional: Fidurenta'),
-    ('1018', 2.5, 'provisional: Plan Semilla'),
-    ('1020', 2.5, 'provisional: Sura Credito Privado');
+    ('1007', 1.0, 'Ficha técnica Fiducuenta 31/10/2026: S1/AAAf, vol 0,404 %'),
+    ('1000', 1.0, 'CDT Bancolombia: AAA(col) Fitch 12/11/2026; seguro Fogafín'),
+    ('1001', 1.5, 'CDT Tuya: AAA(col) Fitch 12/11/2026; compañía de financiamiento, sobre tope Fogafín'),
+    ('1008', 1.5, 'Ficha técnica Fidurenta 31/10/2026: S2/AAAf, vol 0,799 %'),
+    ('1018', 2.0, 'Ficha técnica Plan Semilla 31/10/2026: S3/AAAf, vol 1,315 %'),
+    ('1020', 3.0, 'Ficha FIC Sura Crédito Privado 31/10/2026: cerrado, sin calificación, activos alternativos')
 
 -- 3) Correcciones manuales USD por ISIN (vacía al inicio; tiene prioridad sobre las reglas)
 CREATE TABLE riesgo_usd_manual (

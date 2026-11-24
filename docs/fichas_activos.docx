@@ -14,6 +14,76 @@ Es un fondo de plazo corto y bajo riesgo que busca generar utilidades y poder li
 - Riesgo asignado (1 a 5): 1,0
 - Por qué: calificación AAA de crédito y S1 de mercado, volatilidad mínima y duración corta. No es un depósito garantizado.
 
-- Fuente: [https://dam.bancolombia.com/share/EGUjYDpNeQk8RSEey7qf/assets/24574] — Todas las fuentes consultadas el 23/11/2026 - Renta liquidez COP
-- Fuente: [https://media.ffycdn.net/us/grupo-bancolombia-arquitectura-y-contenidos/K5EUj3W51r6c7GdqnSYK.pdf]  - Renta liquidez DÓLARES
-- Fuente: [https://media.ffycdn.net/us/grupo-bancolombia-arquitectura-y-contenidos/PoZ6tniTdKFRT9R3cq8A.pdf] - Renta liquidez FIC ABIERTO SIN PACTO DE PERMANENCIA
+Fuente: [https://dam.bancolombia.com/share/EGUjYDpNeQk8RSEey7qf/assets/24574] — Todas las fuentes consultadas el 23/11/2026 - Renta liquidez COP
+Fuente: [https://media.ffycdn.net/us/grupo-bancolombia-arquitectura-y-contenidos/K5EUj3W51r6c7GdqnSYK.pdf]  - Renta liquidez DÓLARES
+Fuente: [https://media.ffycdn.net/us/grupo-bancolombia-arquitectura-y-contenidos/PoZ6tniTdKFRT9R3cq8A.pdf] - Renta liquidez FIC ABIERTO SIN PACTO DE PERMANENCIA
+
+
+Fiducuenta (cod 1007)
+- Peso en portafolios locales: 1,78 % (1 cliente)
+- Qué es: FIC abierto sin pacto de permanencia de Fiduciaria Bancolombia, de renta fija de baja duración. Objetivo: protección de capital a corto plazo. Perfil conservador.
+- Calificación: S1/AAAf(col), Fitch Ratings Colombia (15/10/2026).
+- Rentabilidad último año (EA, Tipo C): 9,172 %. Volatilidad último año: 0,404 %. Duración: 0,32 años.
+- Riesgo asignado: 1,0. Por qué: sensibilidad al riesgo de mercado S1 y volatilidad baja.
+- Fuente: Ficha técnica Fiducuenta, Bancolombia corte 31/10/2026. Consultada el 23/11/2026.
+
+Fidurenta (cod 1008)
+- Peso en portafolios locales: 3,06 % (2 clientes)
+- Qué es: FIC de renta fija de mediana duración, con tramos de pacto de permanencia de 30 a 359 días. Perfil conservador; objetivo: crecimiento de capital.
+- Calificación: S2/AAAf(col), Fitch Ratings Colombia (15/10/2026).
+- Rentabilidad último año (EA): 9,034 % (Tipo30) a 9,371 % (Tipo360). Volatilidad último año: 0,799 %. Duración: 0,62 años.
+- Riesgo asignado: 1,5. Por qué: calificación S2, intermedia entre Fiducuenta (S1) y Plan Semilla (S3).
+- Fuente: Ficha técnica Fidurenta, Bancolombia corte 31/10/2026. Consultada el 23/11/2026.
+
+Plan Semilla (cod 1018)
+- Peso en portafolios locales: 1,49 % (2 clientes)
+- Qué es: FIC con pacto de permanencia de 365 días, de renta fija de mediana duración. Perfil conservador; objetivo: crecimiento de capital.
+- Calificación: S3/AAAf(col), Fitch Ratings Colombia (15/10/2026).
+- Rentabilidad último año (EA, Tipo B): 8,704 %. Volatilidad último año: 1,315 %. Duración: 0,81 años; plazo promedio de inversiones 2,40 años.
+- Riesgo asignado: 2,0. Por qué: calificación S3, la volatilidad más alta de los fondos del grupo y mayor plazo de inversión.
+- Fuente: Ficha técnica Plan Semilla, Bancolombia corte 31/10/2026. Consultada el 23/11/2026.
+
+
+CDT Bancolombia (cod 1000)
+### CDT Bancolombia (cod 1000)
+- Peso en portafolios locales: 6,31 % del valor local agregado ($370,3 millones, 1 cliente: el mismo que tiene el CDT de Tuya), al 15/05/2024.
+- Qué es: Certificado de Depósito a Término emitido por Bancolombia S.A. Renta fija a plazo definido; la tasa y el plazo de este CDT no están en los datos entregados.
+- Calificación nacional de largo plazo: AAA(col), afirmada por Fitch Ratings el 12/11/2026; ha sido AAA(col) en cada revisión anual desde 2020. Corto plazo: F1+(col). Perspectiva: ___ (confirmar en el comunicado de 12/11/2026).
+- Calificación internacional (referencia): BB+ en moneda local de largo plazo, afirmada el 12/11/2026. La escala internacional está limitada por la calificación del país.
+- Cobertura Fogafín: producto protegido por el seguro de depósito, con tope de $50 millones por depositante en cada entidad; el monto de este CDT ($370 millones) lo supera, por lo que la mayor parte depende del riesgo del emisor.
+- Volatilidad: prácticamente nula si se mantiene hasta el vencimiento (tasa fija); el riesgo es el de crédito del emisor.
+- Riesgo asignado: 1,0. Por qué: banco con la máxima calificación de la escala nacional, sostenida durante años, y producto con seguro de depósito parcial.
+- Fuentes: Fitch Ratings, ficha de Bancolombia (consultada el 23/11/2026); Bancolombia, página del seguro Fogafín.
+Valor de la inversion y la tasa que se ofrece
+
+CDT Tuya (cod 1001)
+
+- - Peso en portafolios locales: 22,54 % del valor local agregado ($1.322,7 millones), con 2 identificadores de cliente. Uno de ellos (1002203023, de un solo día de datos y 10 dígitos) parece ser un identificador mal escrito del cliente 10020203023; sin él, el peso sería de aproximadamente del 12,6 %.
+- ¿Qué es? Certificado de Depósito a Término (CDT) emitido por Compañía de Financiamiento Tuya S.A., entidad financiera colombiana vigilada por la Superintendencia Financiera de Colombia. Sus accionistas son Grupo Éxito y Grupo Bancolombia, con participaciones del 50 % cada uno.
+- Rentabilidad: Variable según el plazo y la tasa pactada al constituir el CDT. Como referencia, según las tasas promedio ponderadas reportadas para el 19 de noviembre de 2026, Tuya registró tasas efectivas anuales aproximadas de 11,86 % a 90 días, 12,68 % a 180 días, 12,96 % a 360 días y 12,99 % para plazos superiores a 360 días.
+- Volatilidad: Aproximadamente 0 % respecto a la variación de la tasa de interés contractual, siempre que el CDT tenga tasa fija y se mantenga hasta su vencimiento.
+- Riesgo asignado: 1,5, CDT Tuya es estable según sus calificaciones crediticias AAA(col) y F1(col).
+- Calificación crediticia: AAA(col) para largo plazo y F1+(col) para corto plazo, ambas afirmadas por Fitch Ratings el 12/11/2026. Perspectiva: Estable. Las calificaciones corresponden a la escala nacional colombiana.
+- Respaldo y protección: Los CDT de Tuya están cubiertos por el Seguro de Depósitos de Fogafín, hasta $50.000.000 COP por depositante y entidad inscrita, de acuerdo con los límites y condiciones establecidos.
+- Justificación del riesgo: Tuya es una compañía de financiamiento supervisada por la Superintendencia Financiera de Colombia, con calificaciones nacionales AAA(col) y F1+(col), perspectiva estable y respaldo potencial de sus accionistas, especialmente Bancolombia. Su calificación refleja también el apoyo potencial de su grupo empresarial. Aunque presenta un perfil crediticio respaldado por estos factores, deben considerarse los riesgos de liquidez, inflación, incumplimiento y concentración de exposición al emisor.
+- Fuentes: Fitch Ratings, Superintendencia Financiera de Colombia, estados financieros de Compañía de Financiamiento Tuya S.A. y Fogafín. Consulta: 23/11/2026.
+
+Sura Crédito Privado (cod 1020)
+- Peso en portafolios locales: 1,13 % (1 cliente)
+- Qué es: FIC cerrado de Fiduciaria Sura (desde 2014), de mediano y largo plazo, con inversiones en activos alternativos, sobre todo libranzas, facturas y derechos de contenido económico. Supuesto: es el "FIC Sura Crédito Privado Colombia" (existen otros fondos con nombre similar).
+- Calificación: ninguna (N/A).
+- Rentabilidad último año (EA): 9,219 % (Serie A). Volatilidad último año: 0,294 %. Duración: 1,05 años.
+- Composición: 47,6 % caja (AAA), 32,4 % tasa fija nacional, 20 % otros FIC. Principales emisores: Davivienda, Bancolombia, Colpensiones.
+- Riesgo asignado: 3,0. Por qué: fondo cerrado (sin liquidez a voluntad), sin calificación y con activos alternativos. La volatilidad reportada es baja pero está suavizada por la valoración a TIR, así que subestima el riesgo.
+- Fuente: Ficha técnica FIC Sura Crédito Privado Colombia, Fiduciaria Sura, corte 31/10/2026. Consultada el 23/11/2026.
+
+
+ACTIVOS LOCALES SIN INFORMACIÓN
+
+Estos registros aparecen en los datos pero no se pudieron caracterizar. Se les asignó el riesgo por defecto de su clase (FICs: 2,5; Renta Variable: 4,5).
+
+- Código 10007, no catalogado, 247.9 Millones COP, 10 Clientes.
+- Sin código, sin clasificar - FICs, 389.6 Millones COP, 1 Cliente.
+- Código 1022, no catalogado - renta variable, 4.0 Millones COP, 1 Cliente.
+- Sin código, sin clasificar - renta variable , 4.7 Millones COP, 1 Cliente.
+
