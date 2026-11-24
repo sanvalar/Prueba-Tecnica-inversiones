@@ -32,7 +32,7 @@ INSERT INTO riesgo_activo_local VALUES
     ('1001', 1.5, 'CDT Tuya: AAA(col) Fitch 12/11/2026; compañía de financiamiento, sobre tope Fogafín'),
     ('1008', 1.5, 'Ficha técnica Fidurenta 31/10/2026: S2/AAAf, vol 0,799 %'),
     ('1018', 2.0, 'Ficha técnica Plan Semilla 31/10/2026: S3/AAAf, vol 1,315 %'),
-    ('1020', 3.0, 'Ficha FIC Sura Crédito Privado 31/10/2026: cerrado, sin calificación, activos alternativos')
+    ('1020', 3.0, 'Ficha FIC Sura Crédito Privado 31/10/2026: cerrado, sin calificación, activos alternativos');
 
 -- 3) Correcciones manuales USD por ISIN (vacía al inicio; tiene prioridad sobre las reglas)
 CREATE TABLE riesgo_usd_manual (

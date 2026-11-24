@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 
+
 import pandas as pd
 from dotenv import load_dotenv
 from sqlalchemy import create_engine, text
@@ -80,7 +81,8 @@ if __name__ == "__main__":
 #ETAPA 4
 def ejecutar_archivo_sql(engine, ruta):
     with engine.begin() as con:
-        con.exec_driver_sql(ruta.read_text(encoding="utf-8"))
+     sql = ruta.read_text(encoding="utf-8")
+     con.exec_driver_sql(sql.replace("%", "%%"))   
     print(f"  ejecutado: {ruta.name}")
     
 if __name__ == "__main__":
