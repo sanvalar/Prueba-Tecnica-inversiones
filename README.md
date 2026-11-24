@@ -130,11 +130,6 @@ Cada CSV entregado se carga como una tabla: `cat_perfil_riesgo`, `catalogo_activ
 Los identificadores se normalizan en SQL: un ID en notación científica (`1.00114E+12`) o expandido con ceros (`100114000000000000`) se convierte en `TRUNC-100114`, así el resultado es el mismo con cualquiera de las dos versiones del archivo. Los CSV pueden venir separados por coma o por punto y coma. Principales problemas de calidad detectados (detalle en `docs/calidad_datos.md`):
 
 - **Identificadores truncados por Excel** (notación científica, 11 identificadores y 2.018 filas del portafolio local): los dígitos perdidos no se pueden recuperar (ningún ID completo de los archivos cae en su rango de redondeo). Se tratan así: se mantienen como clientes propios marcados "ID truncado"; si un mismo ID truncado muestra en una misma fecha más de un perfil de riesgo, se separa en clientes distintos (`sql/02_limpieza.sql`, aplica a `1.00114E+12`); y no se afirma que no tengan portafolio internacional ("USD no verificable"). Detalle y evidencia en `docs/calidad_datos.md`.
-
-**Cómo se resuelve de verdad (IDs reales de la fuente).** Los dígitos no se inventan: se piden a quien tenga la base original.
-1. `python scripts/exportar_ids_truncados.py` genera `data/ids_truncados_pendientes.csv` (token, `id_real` vacío, perfil, banca, fecha y valor para identificar a cada cliente).
-2. La fuente completa `id_real` (10 u 11 dígitos) y se guarda como `data/mapa_ids_truncados.csv` (solo se usan las columnas `token` e `id_real`).
-3. `python scripts/cargar_datos.py` y `python scripts/correr_modelo.py`: el cruce se aplica en `v_macro_limpio` (vista `v_mapa_id_truncado`); esos clientes dejan de marcarse como truncados, cruzan con el portafolio USD y el modelo se recalcula. Sin el archivo todo sigue igual que antes. Ambos archivos tienen datos de clientes y están en `.gitignore`.
 - Filas desplazadas y duplicados.
 - **Códigos de activo sin catálogo**: el 10007 (10 clientes, ≈ 4,2 % del valor local), el 1022 y la categoría "SIN CLASIFICAR". No se inventa su naturaleza: se documentan como dato faltante y se les asigna el riesgo de su clase.
 - Identificadores sospechosos (por ejemplo, de 10 dígitos y una sola fecha), tratados como posibles errores de digitación.
@@ -225,6 +220,7 @@ Los portafolios entregados corresponden a marzo–mayo de 2024; la información 
 
 - `docs/hallazgos.md`: problemas de calidad de datos y cómo se trataron.
 - `docs/fichas_activos.md`: investigación de mercado, una ficha por activo local y por familia internacional, con fuente y fecha de consulta.
+- `docs/presentacion.md`: guion de la presentación de 10 minutos y preguntas probables.
 
 ## 9. Uso de herramientas de IA
 Se usó un asistente de IA (Claude) como apoyo para estructurar el trabajo, revisar el código y buscar fuentes de mercado. Las decisiones del modelo, los puntajes de riesgo y las conclusiones fueron revisados por la autora. <!-- Ajusta esta sección para que describa con exactitud lo que hiciste. -->
