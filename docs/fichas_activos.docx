@@ -108,3 +108,81 @@ Notas
 •	Qué las mueve (referencia general): Ecopetrol, precio del petróleo y dólar; ISA y Celsia, tasas de interés y regulación del sector eléctrico; Cemargos, ciclo de la construcción; Grupo Sura, Bolívar, Cibest y Corficolombiana, sector financiero y tasas.
 •	Limitación: un año de historia describe el pasado reciente y no predice el futuro.
 
+Activos internacionales (USD)
+
+Total del portafolio USD analizado: ≈ USD 8,83 M, 78 posiciones. Las posiciones se agrupan en familias (clasificación hecha con las mismas reglas por nombre de la vista v_riesgo_usd_posicion). Se investiga cada familia con uno o varios ejemplos reales de los portafolios. Consultas realizadas el 23/11/2026.
+
+Familia	Posiciones	% del valor USD	Riesgo base en el modelo
+Fondos	20	28,3 %	2,0 a 4,0 según estrategia
+Bonos corporativos y soberanos	15	25,1 %	2,0 base; ajustado por emisor
+Acciones y ETFs de acciones	23	13,1 %	4,0
+Bonos del Tesoro de EE. UU.	6	12,2 %	1,0
+Liquidez	2	8,2 %	1,0
+Notas estructuradas	7	8,2 %	3,5
+ETFs de bonos	4	4,6 %	1,5 base; ajustado por duración
+ETF apalancado 3X	1	0,3 %	5,0
+
+Aviso general: las calificaciones crediticias son las más recientes que se encontraron y pueden diferir de las vigentes en la fecha de los datos entregados. Donde no se halló un dato, se escribe "sin dato".
+
+1. Fondos (28,3 %)
+Qué son: fondos de inversión de gestoras internacionales (BlackRock, Ninety One, Schroders, Franklin, JPMorgan, PIMCO). El riesgo depende de la estrategia: acciones, bonos o mixtos.
+Ejemplo 1: Ninety One GSF Global Franchise Fund A Acc USD (LU0426412945), el mayor, USD 444 mil, 3 clientes. Invierte principalmente en acciones de todo el mundo (objetivo de crecimiento de capital con algo de renta). Volatilidad: 13,5 % a 1 año y 12,8 % a 3 años (20/11/2026). Composición: 28,6 % tecnología, 26,2 % financiero, 66,6 % EE. UU. Fuentes: Easybank y ficha Ninety One (julio 2025). Indicador de riesgo en Finect: 6 de 7 (20/11/2026); es la escala de esa plataforma y no se verificó contra el KID oficial. Riesgo asignado: 4,0.
+Ejemplo 2: BGF Continental European Flexible Fund A2 Hedged USD (LU1196525536), USD 276 mil, 3 clientes. Invierte al menos 70 % en acciones europeas (sin Reino Unido). Volatilidad a 3 años: 14,34 % (31/10/2026). Fuente: BlackRock. La regla por nombre de la vista lo clasificaba como "mixto" (3,0); se corrige a 4,0 en riesgo_usd_manual.
+Fondos de bonos y mixtos (BGF Fixed Income Global Opportunities, BGF Global Allocation, JPMorgan Income, PIMCO Income): sin dato específico. Se mantiene la regla por nombre (bonos = 2,0; mixtos = 3,0) como supuesto documentado.
+Indicador de riesgo del documento KID (SRI, 1 a 7): no se pudo leer el nivel oficial en las páginas consultadas (la escala aparece, pero no el nivel). Se usó la volatilidad histórica como respaldo.
+Riesgo de la familia: 2,0 a 4,0 según estrategia.
+2. Bonos corporativos y soberanos (25,1 %)
+Qué son: préstamos a empresas, bancos o ciudades. Pagan cupón y devuelven el capital al vencimiento. El riesgo es que el emisor no pague, y se mide con la calificación crediticia. No todos los emisores valen lo mismo, por eso se ajustan por emisor.
+Emisor (ISIN)	Calificación encontrada	Fecha	Riesgo asignado
+EPM, 4,375 % 2031 (USP9379RBC09)	Moody's Baa3 (grado de inversión); Fitch BB (bajo grado de inversión)	10/11/2026	2,5
+Colombia Telecomunicaciones, 4,95 % 2030 (USP28768AC69)	S&P B+, perspectiva estable (alto apalancamiento y liquidez "menos que adecuada")	09/10/2025	3,5
+Banco GNB Sudameris (USP1265VAH52, USP1265VAD49)	Fitch BB, perspectiva estable (informe del 10/06/2026); Moody's Ba2 en depósitos en moneda extranjera, perspectiva estable, evaluación crediticia base ba3 (informe del 31/07/2026)	06/2026 y 07/2026	3,0
+Braskem Idesa, 7,45 % 2029 (USP1850NAA92)	Fitch CC (riesgo inminente de incumplimiento); antes B+ (dic. 2024) y CCC+ (sep. 2025)	19/11/2025	5,0
+Hallazgo: Braskem Idesa pasó de B+ a CC en menos de un año; Fitch citó posible impago de intereses, liquidez de ≈ USD 60 millones (agosto de 2025) y contratación de asesores de reestructuración. Es el activo más riesgoso de esta familia. La posición es de USD 162.508 en 1 cliente.
+Limitaciones: no se investigaron Banistmo, Banco de Bogotá, Bancolombia Panamá/Puerto Rico, Ecopetrol ni Bogotá D.C. Quedan en la regla por defecto (2,0).
+Fuentes: EPM, Energía Estratégica, S&P Coltel, Fitch GNB (informe 10/06/2026), Moody's GNB (informe 31/07/2026), Braskem Idesa CC, Braskem Idesa CCC+.
+3. Acciones y ETFs de acciones (13,1 %)
+Qué son: acciones de empresas (Apple, Meta, Berkshire, Amazon) y ETFs de acciones o sectores (materiales, financiero, mercados emergentes, Europa).
+Datos de mercado (Yahoo Finance, 24/11/2025 a 23/11/2026):
+Activo	Retorno 1a	Volatilidad	Caída máx.
+AAPL	27,0 %	25,0 %	−13,8 %
+AMZN	12,9 %	34,4 %	−19,6 %
+META	−2,2 %	42,7 %	−28,7 %
+NFLX	−45,7 %	35,9 %	−48,1 %
+BRK-B	12,7 %	15,2 %	−9,4 %
+XLB (materiales)	17,4 %	18,7 %	−12,4 %
+EEM (emergentes)	9,9 %	28,3 %	−24,4 %
+VGK (Europa)	10,4 %	17,0 %	−12,1 %
+Riesgo asignado: 4,0. Volatilidad entre 15 % y 43 %; los retornos oscilan entre −46 % y +27 % en el mismo año.
+Fuente: Yahoo Finance mediante scripts/descargar_mercado.py, 23/11/2026.
+4. Bonos del Tesoro de EE. UU. (12,2 %)
+Qué son: bonos emitidos por el gobierno de EE. UU. Ejemplos en los datos: Treasury Notes 4,625 % con vencimiento 15/11/2026 (US91282CJK80, USD 348 mil), 1,75 % 2025, 5 % 2025, 3,875 % 2025 y otros.
+Riesgo: el riesgo de impago es mínimo; las tres agencias principales califican a EE. UU. una categoría por debajo de AAA, con perspectiva estable (S&P AA+ afirmada el 27/06/2026; Fitch AA+ estable afirmada el 14/08/2026; Moody's rebajó a Aa1 en mayo de 2025). El precio solo se mueve por las tasas de interés, y menos cuanto más corto sea el vencimiento (los de los datos son de plazo corto).
+Riesgo asignado: 1,0.
+Fuentes: Fortune (S&P, 27/06/2026), Axios (Moody's, 16/05/2025), cash.ch (Fitch, 14/08/2026).
+5. Notas estructuradas (8,2 %)
+Qué son: productos emitidos por un banco (BNP Paribas, UBS, Citi) cuyo pago depende de cómo se comporte un grupo de índices (aquí Nasdaq 100, S&P 500 y Dow Jones). Las de los datos son "autocall", "twin-win" o ligadas a índices (ejemplos: XS2759143550, CH1234256894, XS2565512410).
+Cómo funcionan (ejemplo genérico de una nota autocall de BNP Paribas):
+En fechas fijas se compara cada índice con su nivel inicial. Si todos están en o por encima de la barrera, la nota se cancela antes y se paga el capital más un retorno.
+Si al final el peor índice cae por debajo de la barrera de protección (en el ejemplo, 70 %), el inversionista pierde capital uno a uno con esa caída.
+Hay doble riesgo: el del índice y el del banco emisor (si quiebra, se puede perder capital y el ingreso).
+Limitación: el ejemplo es un producto de referencia de la misma familia, no la nota específica del cliente; las condiciones exactas (barrera, cupón) se ven en el documento de cada ISIN.
+Riesgo asignado: 3,5.
+Fuente: Momentum Securities, nota autocall emitida por BNP Paribas (ficha del producto).
+6. ETFs de bonos (4,6 %)
+Qué son: canastas de bonos que se compran como una acción. Ejemplos en los datos: iShares $ Treasury Bond 7-10yr (IE00B3VWN518, USD 283 mil), iShares USD Short Duration Corp Bond (IE00BYXYYP94), iShares iBoxx $ Treasury 3-7yr, Vanguard Short-Term Treasury.
+Dato clave: la duración (cuánto se mueve el precio cuando cambian las tasas).
+iShares $ Treasury Bond 7-10yr (IE00B3VWN518), según la ficha de iShares: duración efectiva 6,79 años (20/11/2026); desviación estándar a 3 años 6,67 % (31/10/2026); sigue el índice ICE U.S. Treasury 7-10 Year.
+Según ExtraETF (tercero): volatilidad 7,76 % a 1 año e indicador SRI 3 de 7 (20/11/2026). La ficha de iShares consultada no muestra el SRI.
+Es mucho más volátil que un bono corto del Tesoro.
+Riesgo asignado: el 7-10 años sube de 1,5 a 2,5 (duración larga). Los de plazo corto (Short Duration, Short-Term Treasury) se mantienen en 1,5.
+Hallazgo: la base los clasifica como "Acciones y ETFs", aunque son de renta fija.
+Fuentes: iShares, ficha del ETF, ExtraETF.
+7. ETF apalancado 3X (0,3 %)
+Qué es: Direxion Daily Semiconductor Bull 3X Shares (SOXL), USD 27.020. Busca el 300 % del retorno diario del índice de semiconductores NYSE.
+Por qué es de riesgo extremo:
+El objetivo es solo para un día: "no se debe esperar que entregue tres veces el retorno acumulado del índice en periodos mayores a un día".
+Puede ocurrir una pérdida total en un solo día aunque el índice no pierda todo su valor.
+Está pensado para inversionistas que lo "monitorean y gestionan activamente", no para mantener a largo plazo.
+Riesgo asignado: 5,0.
+Fuente: Direxion, ficha SOXL/SOXS.
