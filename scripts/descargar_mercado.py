@@ -15,7 +15,7 @@ RAIZ = Path(__file__).resolve().parent.parent
 SALIDA = RAIZ / "data" / "mercado_resumen.csv"
 
 # ---------------------------------------------------------------------------
-# 1) EDITA ESTAS DOS LISTAS
+# 1) Listas de activos a consultar
 # Local (COP): nombre en tu base -> ticker en Yahoo Finance (terminan en .CL).
 # Verifica cada ticker buscándolo en https://finance.yahoo.com antes de confiar.
 LOCAL = {
@@ -26,13 +26,12 @@ LOCAL = {
     "GRUBOLIVAR": "GRUBOLIVAR.CL",
     "CEMARGOS": "CEMARGOS.CL",
     "PFCORFICOL": "PFCORFICOL.CL",
-    "PFBCOLOM": "PFCIBEST.CL",  #Ese ticker ya no existe en Yahoo. Bancolombia cambió de nombre a Cibest en 2025, y con eso cambiaron los símbolos de sus acciones:
-    # Acción ordinaria: BCOLOMB pasó a CIBEST.
-    # Acción preferencial: PFBCOLOM pasó a PFCIBEST.
+    "PFBCOLOM": "PFCIBEST.CL",  # Bancolombia pasó a llamarse Cibest en 2025 (PFBCOLOM -> PFCIBEST)
     "ETB": "ETB.CL",
 }
 # Internacional (USD): símbolos de acciones/ETFs que aparecen en tu CSV de USD.
-USD = ["AAPL", "AMZN", "GOOG", "META", "NFLX", "DIS", "BRK-B", "VGK", "EEM", "XLB"]
+USD = ["AAPL", "AMZN", "GOOG", "META", "NFLX", "DIS", "BRK-B", "AMD", "SOFI", "C",
+       "PBR", "PLTR", "PYPL", "LYG", "XLB", "XLF", "EEM", "VGK", "SOXL"]
 # ---------------------------------------------------------------------------
 
 

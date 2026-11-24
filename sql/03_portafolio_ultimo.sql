@@ -31,6 +31,7 @@ WITH ultima AS (
 posiciones AS (
     SELECT
         u.cliente_id, u.fecha, u.tipo_activo, u.isin, u.nombre_activo,
+        MAX(u.simbol)            AS simbol,
         MAX(u.fecha_vencimiento) AS fecha_vencimiento,
         MAX(u.tasa_cupon)        AS tasa_cupon,
         SUM(u.cantidad)          AS cantidad,

@@ -1,8 +1,8 @@
-FICHA DE ACTIVOS
+# Fichas de activos — investigación de mercado
 
-Activos locales 
+## Activos locales
 
-Renta Líquidez (cod 1019)
+### Renta Líquidez (cod 1019)
 
 Es un fondo de plazo corto y bajo riesgo que busca generar utilidades y poder liquidar el dinero de forma rapida y eficaz.
 
@@ -14,12 +14,11 @@ Es un fondo de plazo corto y bajo riesgo que busca generar utilidades y poder li
 - Riesgo asignado (1 a 5): 1,0
 - Por qué: calificación AAA de crédito y S1 de mercado, volatilidad mínima y duración corta. No es un depósito garantizado.
 
-Fuente: [https://dam.bancolombia.com/share/EGUjYDpNeQk8RSEey7qf/assets/24574] — Todas las fuentes consultadas el 23/11/2026 - Renta liquidez COP
-Fuente: [https://media.ffycdn.net/us/grupo-bancolombia-arquitectura-y-contenidos/K5EUj3W51r6c7GdqnSYK.pdf]  - Renta liquidez DÓLARES
-Fuente: [https://media.ffycdn.net/us/grupo-bancolombia-arquitectura-y-contenidos/PoZ6tniTdKFRT9R3cq8A.pdf] - Renta liquidez FIC ABIERTO SIN PACTO DE PERMANENCIA
+- Fuente: [https://dam.bancolombia.com/share/EGUjYDpNeQk8RSEey7qf/assets/24574] — Todas las fuentes consultadas el 23/11/2026 - Renta liquidez COP
+- Fuente: [https://media.ffycdn.net/us/grupo-bancolombia-arquitectura-y-contenidos/K5EUj3W51r6c7GdqnSYK.pdf]  - Renta liquidez DÓLARES
+- Fuente: [https://media.ffycdn.net/us/grupo-bancolombia-arquitectura-y-contenidos/PoZ6tniTdKFRT9R3cq8A.pdf] - Renta liquidez FIC ABIERTO SIN PACTO DE PERMANENCIA
 
-
-Fiducuenta (cod 1007)
+### Fiducuenta (cod 1007)
 - Peso en portafolios locales: 1,78 % (1 cliente)
 - Qué es: FIC abierto sin pacto de permanencia de Fiduciaria Bancolombia, de renta fija de baja duración. Objetivo: protección de capital a corto plazo. Perfil conservador.
 - Calificación: S1/AAAf(col), Fitch Ratings Colombia (15/10/2026).
@@ -27,7 +26,7 @@ Fiducuenta (cod 1007)
 - Riesgo asignado: 1,0. Por qué: sensibilidad al riesgo de mercado S1 y volatilidad baja.
 - Fuente: Ficha técnica Fiducuenta, Bancolombia corte 31/10/2026. Consultada el 23/11/2026.
 
-Fidurenta (cod 1008)
+### Fidurenta (cod 1008)
 - Peso en portafolios locales: 3,06 % (2 clientes)
 - Qué es: FIC de renta fija de mediana duración, con tramos de pacto de permanencia de 30 a 359 días. Perfil conservador; objetivo: crecimiento de capital.
 - Calificación: S2/AAAf(col), Fitch Ratings Colombia (15/10/2026).
@@ -35,7 +34,7 @@ Fidurenta (cod 1008)
 - Riesgo asignado: 1,5. Por qué: calificación S2, intermedia entre Fiducuenta (S1) y Plan Semilla (S3).
 - Fuente: Ficha técnica Fidurenta, Bancolombia corte 31/10/2026. Consultada el 23/11/2026.
 
-Plan Semilla (cod 1018)
+### Plan Semilla (cod 1018)
 - Peso en portafolios locales: 1,49 % (2 clientes)
 - Qué es: FIC con pacto de permanencia de 365 días, de renta fija de mediana duración. Perfil conservador; objetivo: crecimiento de capital.
 - Calificación: S3/AAAf(col), Fitch Ratings Colombia (15/10/2026).
@@ -43,22 +42,19 @@ Plan Semilla (cod 1018)
 - Riesgo asignado: 2,0. Por qué: calificación S3, la volatilidad más alta de los fondos del grupo y mayor plazo de inversión.
 - Fuente: Ficha técnica Plan Semilla, Bancolombia corte 31/10/2026. Consultada el 23/11/2026.
 
-
-CDT Bancolombia (cod 1000)
 ### CDT Bancolombia (cod 1000)
 - Peso en portafolios locales: 6,31 % del valor local agregado ($370,3 millones, 1 cliente: el mismo que tiene el CDT de Tuya), al 15/05/2024.
 - Qué es: Certificado de Depósito a Término emitido por Bancolombia S.A. Renta fija a plazo definido; la tasa y el plazo de este CDT no están en los datos entregados.
-- Calificación nacional de largo plazo: AAA(col), afirmada por Fitch Ratings el 12/11/2026; ha sido AAA(col) en cada revisión anual desde 2020. Corto plazo: F1+(col). Perspectiva: ___ (confirmar en el comunicado de 12/11/2026).
+- Calificación nacional de largo plazo: AAA(col), afirmada por Fitch Ratings el 12/11/2026; ha sido AAA(col) en cada revisión anual desde 2020. Corto plazo: F1+(col). Perspectiva: sin verificar.
 - Calificación internacional (referencia): BB+ en moneda local de largo plazo, afirmada el 12/11/2026. La escala internacional está limitada por la calificación del país.
 - Cobertura Fogafín: producto protegido por el seguro de depósito, con tope de $50 millones por depositante en cada entidad; el monto de este CDT ($370 millones) lo supera, por lo que la mayor parte depende del riesgo del emisor.
 - Volatilidad: prácticamente nula si se mantiene hasta el vencimiento (tasa fija); el riesgo es el de crédito del emisor.
 - Riesgo asignado: 1,0. Por qué: banco con la máxima calificación de la escala nacional, sostenida durante años, y producto con seguro de depósito parcial.
 - Fuentes: Fitch Ratings, ficha de Bancolombia (consultada el 23/11/2026); Bancolombia, página del seguro Fogafín.
-Valor de la inversion y la tasa que se ofrece
 
-CDT Tuya (cod 1001)
+### CDT Tuya (cod 1001)
 
-- - Peso en portafolios locales: 22,54 % del valor local agregado ($1.322,7 millones), con 2 identificadores de cliente. Uno de ellos (1002203023, de un solo día de datos y 10 dígitos) parece ser un identificador mal escrito del cliente 10020203023; sin él, el peso sería de aproximadamente del 12,6 %.
+- Peso en portafolios locales: 22,54 % del valor local agregado ($1.322,7 millones), con 2 identificadores de cliente. Uno de ellos (1002203023, de un solo día de datos y 10 dígitos) parece ser un identificador mal escrito del cliente 10020203023; sin él, el peso sería de aproximadamente del 12,6 %.
 - ¿Qué es? Certificado de Depósito a Término (CDT) emitido por Compañía de Financiamiento Tuya S.A., entidad financiera colombiana vigilada por la Superintendencia Financiera de Colombia. Sus accionistas son Grupo Éxito y Grupo Bancolombia, con participaciones del 50 % cada uno.
 - Rentabilidad: Variable según el plazo y la tasa pactada al constituir el CDT. Como referencia, según las tasas promedio ponderadas reportadas para el 19 de noviembre de 2026, Tuya registró tasas efectivas anuales aproximadas de 11,86 % a 90 días, 12,68 % a 180 días, 12,96 % a 360 días y 12,99 % para plazos superiores a 360 días.
 - Volatilidad: Aproximadamente 0 % respecto a la variación de la tasa de interés contractual, siempre que el CDT tenga tasa fija y se mantenga hasta su vencimiento.
@@ -68,7 +64,7 @@ CDT Tuya (cod 1001)
 - Justificación del riesgo: Tuya es una compañía de financiamiento supervisada por la Superintendencia Financiera de Colombia, con calificaciones nacionales AAA(col) y F1+(col), perspectiva estable y respaldo potencial de sus accionistas, especialmente Bancolombia. Su calificación refleja también el apoyo potencial de su grupo empresarial. Aunque presenta un perfil crediticio respaldado por estos factores, deben considerarse los riesgos de liquidez, inflación, incumplimiento y concentración de exposición al emisor.
 - Fuentes: Fitch Ratings, Superintendencia Financiera de Colombia, estados financieros de Compañía de Financiamiento Tuya S.A. y Fogafín. Consulta: 23/11/2026.
 
-Sura Crédito Privado (cod 1020)
+### Sura Crédito Privado (cod 1020)
 - Peso en portafolios locales: 1,13 % (1 cliente)
 - Qué es: FIC cerrado de Fiduciaria Sura (desde 2014), de mediano y largo plazo, con inversiones en activos alternativos, sobre todo libranzas, facturas y derechos de contenido económico. Supuesto: es el "FIC Sura Crédito Privado Colombia" (existen otros fondos con nombre similar).
 - Calificación: ninguna (N/A).
@@ -77,8 +73,7 @@ Sura Crédito Privado (cod 1020)
 - Riesgo asignado: 3,0. Por qué: fondo cerrado (sin liquidez a voluntad), sin calificación y con activos alternativos. La volatilidad reportada es baja pero está suavizada por la valoración a TIR, así que subestima el riesgo.
 - Fuente: Ficha técnica FIC Sura Crédito Privado Colombia, Fiduciaria Sura, corte 31/10/2026. Consultada el 23/11/2026.
 
-
-ACTIVOS LOCALES SIN INFORMACIÓN
+## ACTIVOS LOCALES SIN INFORMACIÓN
 
 Estos registros aparecen en los datos pero no se pudieron caracterizar. Se les asignó el riesgo por defecto de su clase (FICs: 2,5; Renta Variable: 4,5).
 
@@ -87,102 +82,140 @@ Estos registros aparecen en los datos pero no se pudieron caracterizar. Se les a
 - Código 1022, no catalogado - renta variable, 4.0 Millones COP, 1 Cliente.
 - Sin código, sin clasificar - renta variable , 4.7 Millones COP, 1 Cliente.
 
-ACCIONES LOCALES
+## ACCIONES LOCALES
 
-Activo (cod)	Ticker	Retorno 1a	Volatilidad	Caída máx.	Clientes	Valor (COP)
-Ecopetrol (1004)	ECOPETROL.CL	35,3 %	42,8 %	−21,1 %	11	28.526.720
-ISA (1012)	ISA.CL	4,6 %	43,5 %	−30,7 %	2	24.646.800
-Pref. Grupo Sura (1017)	PFGRUPSURA.CL	39,5 %	36,7 %	−24,3 %	2	14.152.500
-Celsia (1002)	CELSIA.CL	−12,1 %	36,6 %	−29,7 %	1	12.870.000
-Pref. Bancolombia (1014)	PFCIBEST.CL	38,0 %	35,4 %	−21,9 %	2	11.249.300
-Grupo Bolívar (1011)	GRUBOLIVAR.CL	−14,8 %	31,9 %	−28,1 %	1	9.490.000
-Cemargos (1003)	CEMARGOS.CL	−5,9 %	35,6 %	−28,4 %	1	7.097.500
-Pref. Corficolombiana (1016)	PFCORFICOL.CL	3,8 %	31,0 %	−18,3 %	1	6.048.840
-ETB (1005) *	ETB.CL	100,0 %	73,7 %	−35,6 %	4	444.700
+| Activo (cod) | Ticker | Retorno 1a | Volatilidad | Caída máx. | Clientes | Valor (COP) | Riesgo asignado |
+|---|---|---|---|---|---|---|---|
+| Ecopetrol (1004) | ECOPETROL.CL | 35,3 % | 42,8 % | −21,1 % | 11 | 28.526.720 | 4,6 |
+| ISA (1012) | ISA.CL | 4,6 % | 43,5 % | −30,7 % | 2 | 24.646.800 | 4,7 |
+| Pref. Grupo Sura (1017) | PFGRUPSURA.CL | 39,5 % | 36,7 % | −24,3 % | 2 | 14.152.500 | 4,3 |
+| Celsia (1002) | CELSIA.CL | −12,1 % | 36,6 % | −29,7 % | 1 | 12.870.000 | 4,3 |
+| Pref. Bancolombia (1014) | PFCIBEST.CL | 38,0 % | 35,4 % | −21,9 % | 2 | 11.249.300 | 4,3 |
+| Grupo Bolívar (1011) | GRUBOLIVAR.CL | −14,8 % | 31,9 % | −28,1 % | 1 | 9.490.000 | 4,1 |
+| Cemargos (1003) | CEMARGOS.CL | −5,9 % | 35,6 % | −28,4 % | 1 | 7.097.500 | 4,3 |
+| Pref. Corficolombiana (1016) | PFCORFICOL.CL | 3,8 % | 31,0 % | −18,3 % | 1 | 6.048.840 | 4,1 |
+| ETB (1005) * | ETB.CL | 100,0 % | 73,7 % | −35,6 % | 4 | 444.700 | 5,0 |
 
+### Notas
 
-Notas
-•	Bancolombia cambió de nombre a Cibest en 2025; su preferencial pasó de PFBCOLOM a PFCIBEST. En la base de datos aparece con el nombre anterior.
-•	ETB: acción de baja liquidez; el retorno y la volatilidad no son representativos. Peso marginal.
-•	Riesgo asignado a todas: 4,5 / 5 (renta variable). Justificación: volatilidad anual de 31 % a 44 %, frente a 0,2 % 1,3 % de los FICs de liquidez y renta fija revisados.
-•	Qué las mueve (referencia general): Ecopetrol, precio del petróleo y dólar; ISA y Celsia, tasas de interés y regulación del sector eléctrico; Cemargos, ciclo de la construcción; Grupo Sura, Bolívar, Cibest y Corficolombiana, sector financiero y tasas.
-•	Limitación: un año de historia describe el pasado reciente y no predice el futuro.
+- Bancolombia cambió de nombre a Cibest en 2025; su preferencial pasó de PFBCOLOM a PFCIBEST. En la base de datos aparece con el nombre anterior.
+- ETB: acción de baja liquidez; el retorno y la volatilidad no son representativos (el puntaje se limita a 5,0). Peso marginal.
+- Riesgo asignado: se calcula con la volatilidad anual, `2,5 + 5 × volatilidad`, limitado entre 3 y 5 (`sql/04_riesgo_activos.sql`, vista `v_riesgo_mercado`). Las volatilidades de 31 % a 44 % dan de 4,1 a 4,7, frente a 0,2 % a 1,3 % de los FICs de liquidez y renta fija revisados.
+- Qué las mueve (referencia general): Ecopetrol, precio del petróleo y dólar; ISA y Celsia, tasas de interés y regulación del sector eléctrico; Cemargos, ciclo de la construcción; Grupo Sura, Bolívar, Cibest y Corficolombiana, sector financiero y tasas.
+- Limitación: un año de historia describe el pasado reciente y no predice el futuro.
 
-Activos internacionales (USD)
+## Activos internacionales (USD)
 
 Total del portafolio USD analizado: ≈ USD 8,83 M, 78 posiciones. Las posiciones se agrupan en familias (clasificación hecha con las mismas reglas por nombre de la vista v_riesgo_usd_posicion). Se investiga cada familia con uno o varios ejemplos reales de los portafolios. Consultas realizadas el 23/11/2026.
 
-Familia	Posiciones	% del valor USD	Riesgo base en el modelo
-Fondos	20	28,3 %	2,0 a 4,0 según estrategia
-Bonos corporativos y soberanos	15	25,1 %	2,0 base; ajustado por emisor
-Acciones y ETFs de acciones	23	13,1 %	4,0
-Bonos del Tesoro de EE. UU.	6	12,2 %	1,0
-Liquidez	2	8,2 %	1,0
-Notas estructuradas	7	8,2 %	3,5
-ETFs de bonos	4	4,6 %	1,5 base; ajustado por duración
-ETF apalancado 3X	1	0,3 %	5,0
+| Familia | Posiciones | % del valor USD | Riesgo base en el modelo |
+|---|---|---|---|
+| Fondos | 20 | 28,3 % | 2,0 a 4,0 según estrategia |
+| Bonos corporativos y soberanos | 15 | 25,1 % | 2,0 base; ajustado por emisor |
+| Acciones y ETFs de acciones | 23 | 13,1 % | 4,0 |
+| Bonos del Tesoro de EE. UU. | 6 | 12,2 % | 1,0 |
+| Liquidez | 2 | 8,2 % | 1,0 |
+| Notas estructuradas | 7 | 8,2 % | 3,5 |
+| ETFs de bonos | 4 | 4,6 % | 1,5 base; ajustado por duración |
+| ETF apalancado 3X | 1 | 0,3 % | 5,0 |
 
 Aviso general: las calificaciones crediticias son las más recientes que se encontraron y pueden diferir de las vigentes en la fecha de los datos entregados. Donde no se halló un dato, se escribe "sin dato".
 
-1. Fondos (28,3 %)
+### 1. Fondos (28,3 %)
 Qué son: fondos de inversión de gestoras internacionales (BlackRock, Ninety One, Schroders, Franklin, JPMorgan, PIMCO). El riesgo depende de la estrategia: acciones, bonos o mixtos.
+
 Ejemplo 1: Ninety One GSF Global Franchise Fund A Acc USD (LU0426412945), el mayor, USD 444 mil, 3 clientes. Invierte principalmente en acciones de todo el mundo (objetivo de crecimiento de capital con algo de renta). Volatilidad: 13,5 % a 1 año y 12,8 % a 3 años (20/11/2026). Composición: 28,6 % tecnología, 26,2 % financiero, 66,6 % EE. UU. Fuentes: Easybank y ficha Ninety One (julio 2025). Indicador de riesgo en Finect: 6 de 7 (20/11/2026); es la escala de esa plataforma y no se verificó contra el KID oficial. Riesgo asignado: 4,0.
+
 Ejemplo 2: BGF Continental European Flexible Fund A2 Hedged USD (LU1196525536), USD 276 mil, 3 clientes. Invierte al menos 70 % en acciones europeas (sin Reino Unido). Volatilidad a 3 años: 14,34 % (31/10/2026). Fuente: BlackRock. La regla por nombre de la vista lo clasificaba como "mixto" (3,0); se corrige a 4,0 en riesgo_usd_manual.
+
 Fondos de bonos y mixtos (BGF Fixed Income Global Opportunities, BGF Global Allocation, JPMorgan Income, PIMCO Income): sin dato específico. Se mantiene la regla por nombre (bonos = 2,0; mixtos = 3,0) como supuesto documentado.
+
 Indicador de riesgo del documento KID (SRI, 1 a 7): no se pudo leer el nivel oficial en las páginas consultadas (la escala aparece, pero no el nivel). Se usó la volatilidad histórica como respaldo.
+
 Riesgo de la familia: 2,0 a 4,0 según estrategia.
-2. Bonos corporativos y soberanos (25,1 %)
+### 2. Bonos corporativos y soberanos (25,1 %)
 Qué son: préstamos a empresas, bancos o ciudades. Pagan cupón y devuelven el capital al vencimiento. El riesgo es que el emisor no pague, y se mide con la calificación crediticia. No todos los emisores valen lo mismo, por eso se ajustan por emisor.
-Emisor (ISIN)	Calificación encontrada	Fecha	Riesgo asignado
-EPM, 4,375 % 2031 (USP9379RBC09)	Moody's Baa3 (grado de inversión); Fitch BB (bajo grado de inversión)	10/11/2026	2,5
-Colombia Telecomunicaciones, 4,95 % 2030 (USP28768AC69)	S&P B+, perspectiva estable (alto apalancamiento y liquidez "menos que adecuada")	09/10/2025	3,5
-Banco GNB Sudameris (USP1265VAH52, USP1265VAD49)	Fitch BB, perspectiva estable (informe del 10/06/2026); Moody's Ba2 en depósitos en moneda extranjera, perspectiva estable, evaluación crediticia base ba3 (informe del 31/07/2026)	06/2026 y 07/2026	3,0
-Braskem Idesa, 7,45 % 2029 (USP1850NAA92)	Fitch CC (riesgo inminente de incumplimiento); antes B+ (dic. 2024) y CCC+ (sep. 2025)	19/11/2025	5,0
+| Emisor (ISIN) | Calificación encontrada | Fecha | Riesgo asignado |
+|---|---|---|---|
+| EPM, 4,375 % 2031 (USP9379RBC09) | Moody's Baa3 (grado de inversión); Fitch BB (bajo grado de inversión) | 10/11/2026 | 2,5 |
+| Colombia Telecomunicaciones, 4,95 % 2030 (USP28768AC69) | S&P B+, perspectiva estable (alto apalancamiento y liquidez "menos que adecuada") | 09/10/2025 | 3,5 |
+| Banco GNB Sudameris (USP1265VAH52, USP1265VAD49) | Fitch BB, perspectiva estable (informe del 10/06/2026); Moody's Ba2 en depósitos en moneda extranjera, perspectiva estable, evaluación crediticia base ba3 (informe del 31/07/2026) | 06/2026 y 07/2026 | 3,0 |
+| Braskem Idesa, 7,45 % 2029 (USP1850NAA92) | Fitch CC (riesgo inminente de incumplimiento); antes B+ (dic. 2024) y CCC+ (sep. 2025) | 19/11/2025 | 5,0 |
+
 Hallazgo: Braskem Idesa pasó de B+ a CC en menos de un año; Fitch citó posible impago de intereses, liquidez de ≈ USD 60 millones (agosto de 2025) y contratación de asesores de reestructuración. Es el activo más riesgoso de esta familia. La posición es de USD 162.508 en 1 cliente.
+
 Limitaciones: no se investigaron Banistmo, Banco de Bogotá, Bancolombia Panamá/Puerto Rico, Ecopetrol ni Bogotá D.C. Quedan en la regla por defecto (2,0).
+
 Fuentes: EPM, Energía Estratégica, S&P Coltel, Fitch GNB (informe 10/06/2026), Moody's GNB (informe 31/07/2026), Braskem Idesa CC, Braskem Idesa CCC+.
-3. Acciones y ETFs de acciones (13,1 %)
+### 3. Acciones y ETFs de acciones (13,1 %)
 Qué son: acciones de empresas (Apple, Meta, Berkshire, Amazon) y ETFs de acciones o sectores (materiales, financiero, mercados emergentes, Europa).
+
 Datos de mercado (Yahoo Finance, 24/11/2025 a 23/11/2026):
-Activo	Retorno 1a	Volatilidad	Caída máx.
-AAPL	27,0 %	25,0 %	−13,8 %
-AMZN	12,9 %	34,4 %	−19,6 %
-META	−2,2 %	42,7 %	−28,7 %
-NFLX	−45,7 %	35,9 %	−48,1 %
-BRK-B	12,7 %	15,2 %	−9,4 %
-XLB (materiales)	17,4 %	18,7 %	−12,4 %
-EEM (emergentes)	9,9 %	28,3 %	−24,4 %
-VGK (Europa)	10,4 %	17,0 %	−12,1 %
-Riesgo asignado: 4,0. Volatilidad entre 15 % y 43 %; los retornos oscilan entre −46 % y +27 % en el mismo año.
+| Activo | Retorno 1a | Volatilidad | Caída máx. |
+|---|---|---|---|
+| AAPL | 27,0 % | 25,0 % | −13,8 % |
+| AMZN | 12,9 % | 34,4 % | −19,6 % |
+| META | −2,2 % | 42,7 % | −28,7 % |
+| NFLX | −45,7 % | 35,9 % | −48,1 % |
+| BRK-B | 12,7 % | 15,2 % | −9,4 % |
+| XLB (materiales) | 17,4 % | 18,7 % | −12,4 % |
+| EEM (emergentes) | 9,9 % | 28,3 % | −24,4 % |
+| VGK (Europa) | 10,4 % | 17,0 % | −12,1 % |
+
+Riesgo asignado: `2,5 + 5 × volatilidad anual` entre 3 y 5 (de 3,3 para Berkshire a 4,6 para Meta; 4,0 si el activo no está en la tabla de mercado). Volatilidad entre 15 % y 43 %; los retornos oscilan entre −46 % y +27 % en el mismo año.
+
 Fuente: Yahoo Finance mediante scripts/descargar_mercado.py, 23/11/2026.
-4. Bonos del Tesoro de EE. UU. (12,2 %)
+### 4. Bonos del Tesoro de EE. UU. (12,2 %)
 Qué son: bonos emitidos por el gobierno de EE. UU. Ejemplos en los datos: Treasury Notes 4,625 % con vencimiento 15/11/2026 (US91282CJK80, USD 348 mil), 1,75 % 2025, 5 % 2025, 3,875 % 2025 y otros.
+
 Riesgo: el riesgo de impago es mínimo; las tres agencias principales califican a EE. UU. una categoría por debajo de AAA, con perspectiva estable (S&P AA+ afirmada el 27/06/2026; Fitch AA+ estable afirmada el 14/08/2026; Moody's rebajó a Aa1 en mayo de 2025). El precio solo se mueve por las tasas de interés, y menos cuanto más corto sea el vencimiento (los de los datos son de plazo corto).
+
 Riesgo asignado: 1,0.
+
 Fuentes: Fortune (S&P, 27/06/2026), Axios (Moody's, 16/05/2025), cash.ch (Fitch, 14/08/2026).
-5. Notas estructuradas (8,2 %)
+### 5. Notas estructuradas (8,2 %)
 Qué son: productos emitidos por un banco (BNP Paribas, UBS, Citi) cuyo pago depende de cómo se comporte un grupo de índices (aquí Nasdaq 100, S&P 500 y Dow Jones). Las de los datos son "autocall", "twin-win" o ligadas a índices (ejemplos: XS2759143550, CH1234256894, XS2565512410).
+
 Cómo funcionan (ejemplo genérico de una nota autocall de BNP Paribas):
+
 En fechas fijas se compara cada índice con su nivel inicial. Si todos están en o por encima de la barrera, la nota se cancela antes y se paga el capital más un retorno.
+
 Si al final el peor índice cae por debajo de la barrera de protección (en el ejemplo, 70 %), el inversionista pierde capital uno a uno con esa caída.
+
 Hay doble riesgo: el del índice y el del banco emisor (si quiebra, se puede perder capital y el ingreso).
+
 Limitación: el ejemplo es un producto de referencia de la misma familia, no la nota específica del cliente; las condiciones exactas (barrera, cupón) se ven en el documento de cada ISIN.
+
 Riesgo asignado: 3,5.
+
 Fuente: Momentum Securities, nota autocall emitida por BNP Paribas (ficha del producto).
-6. ETFs de bonos (4,6 %)
+### 6. ETFs de bonos (4,6 %)
 Qué son: canastas de bonos que se compran como una acción. Ejemplos en los datos: iShares $ Treasury Bond 7-10yr (IE00B3VWN518, USD 283 mil), iShares USD Short Duration Corp Bond (IE00BYXYYP94), iShares iBoxx $ Treasury 3-7yr, Vanguard Short-Term Treasury.
+
 Dato clave: la duración (cuánto se mueve el precio cuando cambian las tasas).
+
 iShares $ Treasury Bond 7-10yr (IE00B3VWN518), según la ficha de iShares: duración efectiva 6,79 años (20/11/2026); desviación estándar a 3 años 6,67 % (31/10/2026); sigue el índice ICE U.S. Treasury 7-10 Year.
+
 Según ExtraETF (tercero): volatilidad 7,76 % a 1 año e indicador SRI 3 de 7 (20/11/2026). La ficha de iShares consultada no muestra el SRI.
+
 Es mucho más volátil que un bono corto del Tesoro.
+
 Riesgo asignado: el 7-10 años sube de 1,5 a 2,5 (duración larga). Los de plazo corto (Short Duration, Short-Term Treasury) se mantienen en 1,5.
+
 Hallazgo: la base los clasifica como "Acciones y ETFs", aunque son de renta fija.
+
 Fuentes: iShares, ficha del ETF, ExtraETF.
-7. ETF apalancado 3X (0,3 %)
+### 7. ETF apalancado 3X (0,3 %)
 Qué es: Direxion Daily Semiconductor Bull 3X Shares (SOXL), USD 27.020. Busca el 300 % del retorno diario del índice de semiconductores NYSE.
+
 Por qué es de riesgo extremo:
+
 El objetivo es solo para un día: "no se debe esperar que entregue tres veces el retorno acumulado del índice en periodos mayores a un día".
+
 Puede ocurrir una pérdida total en un solo día aunque el índice no pierda todo su valor.
+
 Está pensado para inversionistas que lo "monitorean y gestionan activamente", no para mantener a largo plazo.
+
 Riesgo asignado: 5,0.
+
 Fuente: Direxion, ficha SOXL/SOXS.

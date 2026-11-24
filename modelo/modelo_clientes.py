@@ -114,16 +114,28 @@ def alinear_perfil(f: pd.DataFrame) -> pd.DataFrame:
 
 def recomendar(r) -> str:
     msgs = []
+    # Un ID truncado por Excel puede agrupar a varios clientes y no se puede cruzar con USD:
+    # con esos clientes no se afirma que "no tengan" portafolio internacional.
+    truncado = bool(r.get("id_truncado")) if pd.notna(r.get("id_truncado")) else False
+
     if r["estado_perfil"] == "PERFIL SIN DEFINIR":
         msgs.append(f"Completar el perfil de riesgo (su portafolio se comporta como {r['perfil_implicito'].lower()}).")
     elif r["estado_perfil"].startswith("MÁS RIESGOSO"):
         msgs.append(f"Revisar exposición: su portafolio es {r['perfil_implicito'].lower()} y su perfil es {r['perfil_riesgo'].lower()}; valorar mover parte a renta fija/FICs.")
     elif r["estado_perfil"].startswith("MÁS CONSERVADOR"):
         msgs.append(f"Oportunidad: su perfil es {r['perfil_riesgo'].lower()} y el portafolio es {r['perfil_implicito'].lower()}; hay espacio para más riesgo.")
-    if r["concentracion"] >= 0.8 and r["n_posiciones_cop"] <= 2:
-        msgs.append("Alta concentración (≥80% en una posición): diversificar entre emisores.")
-    if not bool(r["tiene_portafolio_usd"]) and r["total_cop"] >= 5e7:
-        msgs.append("Patrimonio local relevante sin portafolio internacional: evaluar diversificación en USD.")
+
+    if truncado:
+        # Un solo aviso: con un ID que puede agrupar varios clientes, ni la concentración
+        # ni la ausencia de portafolio USD son afirmaciones confiables.
+        if r["concentracion"] >= 0.8 or (not bool(r["tiene_portafolio_usd"]) and r["total_cop"] >= 5e7):
+            msgs.append("ID truncado (puede agrupar varios clientes): validar con la fuente original antes de evaluar concentración o diversificación en USD.")
+    else:
+        if r["concentracion"] >= 0.8 and r["n_posiciones_cop"] <= 2:
+            msgs.append("Alta concentración (≥80% en una posición): diversificar entre emisores.")
+        if not bool(r["tiene_portafolio_usd"]) and r["total_cop"] >= 5e7:
+            msgs.append("Patrimonio local relevante sin portafolio internacional: evaluar diversificación en USD.")
+
     if r["pct_rv"] >= 0.9 and r["total_cop"] < 5e6:
         msgs.append("Portafolio pequeño 100% en acciones: considerar fondos para diversificar con montos bajos.")
-    return " ".join(msgs) if msgs else "Sin alertas: portafolio coherente con su perfil."
+    return "\n".join(msgs) if msgs else "Sin alertas: portafolio coherente con su perfil."

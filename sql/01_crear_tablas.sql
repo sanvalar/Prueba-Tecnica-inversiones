@@ -41,4 +41,23 @@ CREATE TABLE IF NOT EXISTS historico_aba_usd_internacional (
     fecha_vencimiento TEXT,
     tasa_cupon TEXT
 );
-    
+
+-- Datos de mercado por activo (scripts/descargar_mercado.py). Opcional: puede quedar vacía.
+CREATE TABLE IF NOT EXISTS mercado_activo (
+    activo            TEXT,
+    ticker            TEXT,
+    mercado           TEXT,
+    dias              TEXT,
+    desde             TEXT,
+    hasta             TEXT,
+    retorno_1a        TEXT,
+    volatilidad_anual TEXT,
+    max_drawdown      TEXT
+);
+
+-- Cruce opcional de IDs truncados por Excel -> ID real (lo entrega la fuente original).
+-- Se llena con data/mapa_ids_truncados.csv (columnas token,id_real). Puede quedar vacía.
+CREATE TABLE IF NOT EXISTS mapa_id_truncado (
+    token   TEXT,
+    id_real TEXT
+);

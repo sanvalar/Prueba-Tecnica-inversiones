@@ -1,182 +1,196 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Portafolio por cliente</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="{{ plotly_url }}"></script>
-</head>
-<body class="bg-light">
-<div class="container py-4">
+{% extends "portafolios/base.html" %}
+{% block titulo %}Portafolio por cliente{% endblock %}
 
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <h1 class="h3 mb-0">Portafolio por cliente</h1>
-    <a href="/admin/portafolios/consultasql/" class="btn btn-outline-secondary btn-sm">Gestionar consultas SQL</a>
+{% block contenido %}
+<div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-3">
+  <div>
+    <h1 class="h3 page-title mb-1">Portafolio por cliente</h1>
+    <div class="text-muted">Último dato disponible de cada cliente: portafolio local (COP), internacional (USD) y análisis del modelo.</div>
   </div>
+</div>
 
-  {% if error %}
-    <div class="alert alert-danger">{{ error }}</div>
-  {% endif %}
+{% if error %}<div class="alert alert-danger">{{ error }}</div>{% endif %}
 
-  <form method="get" class="mb-4">
-    <label for="cliente" class="form-label">Cliente</label>
-    <select id="cliente" name="cliente" class="form-select" onchange="this.form.submit()">
-      <option value="">-- Selecciona un cliente --</option>
+<div class="card mb-4"><div class="card-body">
+  <form method="get">
+    <label for="cliente" class="card-title-sm mb-2">Cliente</label>
+    <select id="cliente" name="cliente" class="form-select form-select-lg" onchange="this.form.submit()">
+      <option value="">Selecciona un cliente…</option>
       {% for c in clientes %}
         <option value="{{ c.cliente_id }}" {% if c.cliente_id == cliente_sel %}selected{% endif %}>
-          {{ c.cliente_id }} · {{ c.banca|default:"Sin banca" }} · {{ c.perfil_riesgo|default:"Sin definir" }}{% if c.id_truncado %} · ID truncado{% endif %}{% if not c.tiene_portafolio_usd %} · sin USD{% endif %}
+          {{ c.etiqueta }} · {{ c.banca|default:"Sin banca" }} · {{ c.perfil_riesgo|default:"Sin definir" }} · $ {{ c.total_cop|floatformat:"0g" }}{% if not c.tiene_portafolio_usd %} · {% if c.id_truncado %}USD no verificable{% else %}sin USD{% endif %}{% endif %}
         </option>
       {% endfor %}
     </select>
     <noscript><button class="btn btn-primary mt-2">Ver portafolio</button></noscript>
   </form>
+</div></div>
 
-  {% if cliente_sel and not actual %}
-    <div class="alert alert-warning">El cliente indicado no existe en los datos.</div>
+{% if cliente_sel and not actual %}
+  <div class="alert alert-warning">El cliente indicado no existe en los datos.</div>
+{% endif %}
+
+{% if actual %}
+  <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+    <h2 class="h5 mb-0 me-2">{{ actual.etiqueta }}</h2>
+    <span class="chip"><i class="bi bi-building"></i>{{ actual.banca|default:"Sin banca" }}</span>
+    <span class="chip"><i class="bi bi-person-badge"></i>Perfil declarado: {{ actual.perfil_riesgo|default:"Sin definir" }}</span>
+    {% if actual.id_truncado %}<span class="chip secondary" title="El identificador llegó en notación científica de Excel; no se puede cruzar con el portafolio internacional."><i class="bi bi-exclamation-circle"></i>ID truncado</span>{% endif %}
+  </div>
+
+  <div class="row g-3 mb-4">
+    <div class="col-6 col-lg-3"><div class="card h-100 kpi"><div class="card-body">
+      <div class="d-flex justify-content-between"><div class="card-title-sm">Total local</div><div class="icon"><i class="bi bi-cash-stack"></i></div></div>
+      <div class="value mt-1">$ {{ actual.total_cop|floatformat:"0g" }}</div>
+      <div class="sub">COP · datos al {{ actual.fecha_cop|date:"d/m/Y" }}</div>
+    </div></div></div>
+    <div class="col-6 col-lg-3"><div class="card h-100 kpi"><div class="card-body">
+      <div class="d-flex justify-content-between"><div class="card-title-sm">Total internacional</div><div class="icon"><i class="bi bi-globe-americas"></i></div></div>
+      {% if actual.tiene_portafolio_usd %}
+        <div class="value mt-1">US$ {{ actual.total_usd|floatformat:"2g" }}</div>
+        <div class="sub">USD · datos al {{ actual.fecha_usd|date:"d/m/Y" }}</div>
+      {% else %}
+        <div class="value mt-1">—</div>
+        <div class="sub">{% if actual.id_truncado %}No verificable (ID truncado){% else %}Sin portafolio USD{% endif %}</div>
+      {% endif %}
+    </div></div></div>
+    <div class="col-6 col-lg-3"><div class="card h-100 kpi"><div class="card-body">
+      <div class="d-flex justify-content-between"><div class="card-title-sm">Posiciones</div><div class="icon"><i class="bi bi-collection"></i></div></div>
+      <div class="value mt-1">{{ actual.n_posiciones_cop|default:0 }}{% if actual.tiene_portafolio_usd %} <span class="text-muted fs-6">+ {{ actual.n_posiciones_usd }} USD</span>{% endif %}</div>
+      <div class="sub">en el portafolio local</div>
+    </div></div></div>
+    <div class="col-6 col-lg-3"><div class="card h-100 kpi"><div class="card-body">
+      <div class="d-flex justify-content-between"><div class="card-title-sm">Estado frente al perfil</div><div class="icon"><i class="bi bi-activity"></i></div></div>
+      {% if modelo %}
+        <div class="mt-2"><span class="chip {{ modelo.estado_clase }} fs-6">{{ modelo.estado_texto }}</span></div>
+        <div class="sub mt-2">Perfil sugerido: {{ modelo.perfil_implicito }}</div>
+      {% else %}
+        <div class="sub mt-2">Sin resultado del modelo</div>
+      {% endif %}
+    </div></div></div>
+  </div>
+
+  {% if modelo %}
+  <div class="card mb-4"><div class="card-body">
+    <div class="d-flex justify-content-between align-items-start mb-1">
+      <h2 class="h5 mb-0"><i class="bi bi-cpu me-1"></i>Análisis del modelo</h2>
+      <span class="chip">{{ modelo.segmento }}</span>
+    </div>
+    <p class="text-muted small">La barra muestra dónde cae el riesgo del portafolio (1 = muy bajo, 5 = muy alto). La zona resaltada es el perfil que el cliente declaró.</p>
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="card-title-sm">Riesgo del portafolio en pesos</div>
+        <div class="scale-wrap mt-2">
+          <div class="scale">
+            <div class="band b1 {% if modelo.perfil_riesgo == 'CONSERVADOR' %}on{% endif %}"></div>
+            <div class="band b2 {% if modelo.perfil_riesgo == 'MODERADO' %}on{% endif %}"></div>
+            <div class="band b3 {% if modelo.perfil_riesgo == 'AGRESIVO' %}on{% endif %}"></div>
+          </div>
+          {% if modelo.pos_cop != None %}<div class="scale-marker" data-v="{{ modelo.score_cop|floatformat:1 }}" style="left: {{ modelo.pos_cop|stringformat:'.1f' }}%"></div>{% endif %}
+        </div>
+        <div class="scale-labels"><span class="l1">Conservador</span><span class="l2">Moderado</span><span class="l3">Agresivo</span></div>
+        {% if modelo.score_usd %}
+          <div class="card-title-sm mt-4">Riesgo del portafolio en dólares <span class="text-lowercase">(informativo)</span></div>
+          <div class="scale-wrap mt-2">
+            <div class="scale"><div class="band b1 on"></div><div class="band b2 on"></div><div class="band b3 on"></div></div>
+            <div class="scale-marker" data-v="{{ modelo.score_usd|floatformat:1 }}" style="left: {{ modelo.pos_usd|stringformat:'.1f' }}%"></div>
+          </div>
+          <div class="scale-labels"><span class="l1">Conservador</span><span class="l2">Moderado</span><span class="l3">Agresivo</span></div>
+        {% endif %}
+      </div>
+      <div class="col-lg-6">
+        <div class="card-title-sm mb-2">Perfil declarado vs. sugerido</div>
+        <div class="d-flex flex-wrap gap-2 mb-3">
+          <span class="chip"><i class="bi bi-person-badge"></i>Declarado: {{ modelo.perfil_riesgo }}</span>
+          <span class="chip"><i class="bi bi-stars"></i>Sugerido: {{ modelo.perfil_implicito }}</span>
+          <span class="chip {{ modelo.estado_clase }}">{{ modelo.estado_texto }}</span>
+        </div>
+        <div class="card-title-sm mb-1">Recomendación para el asesor</div>
+        <ul class="reco ps-3 mb-0">
+          {% for linea in modelo.recomendaciones %}<li>{{ linea }}</li>{% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div></div>
+  {% else %}
+    <p class="text-muted small mb-4"><i class="bi bi-info-circle me-1"></i>Sin resultado del modelo para este cliente. Ejecuta <code>python scripts/correr_modelo.py</code>.</p>
   {% endif %}
 
-  {% if actual %}
+  <ul class="nav nav-tabs mb-3" role="tablist">
+    <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-local" type="button"><i class="bi bi-cash-stack me-1"></i>Portafolio local (COP)</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-usd" type="button"><i class="bi bi-globe-americas me-1"></i>Portafolio internacional (USD)</button></li>
+  </ul>
 
-    {% if actual.id_truncado %}
-      <div class="alert alert-warning">
-        El identificador de este cliente llegó truncado (notación científica de Excel).
-        Por eso no se puede cruzar con el portafolio internacional.
+  <div class="tab-content">
+    <div class="tab-pane fade show active" id="tab-local">
+      <div class="row g-3">
+        <div class="col-lg-5"><div class="card h-100"><div class="card-body">{{ grafico_cop_dona|safe }}</div></div></div>
+        <div class="col-lg-7"><div class="card h-100"><div class="card-body">{{ grafico_cop_barras|safe }}</div></div></div>
       </div>
-    {% endif %}
-
-    <div class="row g-3 mb-4">
-      <div class="col-6 col-md-3">
-        <div class="card h-100"><div class="card-body">
-          <div class="text-muted small">Total local (COP)</div>
-          <div class="fs-5 fw-bold">$ {{ actual.total_cop|floatformat:"0g" }}</div>
-          <div class="text-muted small">Datos al {{ actual.fecha_cop|date:"d/m/Y" }}</div>
-        </div></div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="card h-100"><div class="card-body">
-          <div class="text-muted small">Total internacional (USD)</div>
-          {% if actual.tiene_portafolio_usd %}
-            <div class="fs-5 fw-bold">US$ {{ actual.total_usd|floatformat:"2g" }}</div>
-            <div class="text-muted small">Datos al {{ actual.fecha_usd|date:"d/m/Y" }}</div>
-          {% else %}
-            <div class="fs-5 fw-bold">-</div>
-            <div class="text-muted small">Sin portafolio USD</div>
-          {% endif %}
-        </div></div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="card h-100"><div class="card-body">
-          <div class="text-muted small">Banca</div>
-          <div class="fs-5 fw-bold">{{ actual.banca|default:"Sin banca" }}</div>
-        </div></div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="card h-100"><div class="card-body">
-          <div class="text-muted small">Perfil de riesgo</div>
-          <div class="fs-5 fw-bold">{{ actual.perfil_riesgo|default:"Sin definir" }}</div>
-        </div></div>
-      </div>
-    </div>
-
-    {% if modelo %}
-      {% with m=modelo.0 %}
-      <div class="card mb-4">
-        <div class="card-body">
-          <div class="d-flex justify-content-between align-items-start mb-2">
-            <h2 class="h5 mb-0">Análisis del modelo</h2>
-            <span class="badge
-              {% if 'ALINEADO' in m.estado_perfil %}bg-success
-              {% elif 'RIESGOSO' in m.estado_perfil %}bg-danger
-              {% elif 'CONSERVADOR' in m.estado_perfil %}bg-warning text-dark
-              {% else %}bg-secondary{% endif %}">
-              {{ m.estado_perfil }}
-            </span>
-          </div>
-
-          <p class="mb-1"><strong>Segmento:</strong> {{ m.segmento }}</p>
-          <p class="mb-3">
-            <strong>Perfil declarado:</strong> {{ m.perfil_riesgo|default:"Sin definir" }}
-            · <strong>Perfil sugerido:</strong> {{ m.perfil_implicito }}
-          </p>
-
-          {% if m.score_cop %}
-            <p class="mb-1 small">Riesgo del portafolio en pesos: {{ m.score_cop|floatformat:1 }} / 5</p>
-            <div class="progress mb-2" style="height: 8px;">
-              <div class="progress-bar" style="width: {% widthratio m.score_cop 5 100 %}%"></div>
-            </div>
-          {% endif %}
-          {% if m.score_usd %}
-            <p class="mb-1 small">Riesgo del portafolio en dólares: {{ m.score_usd|floatformat:1 }} / 5</p>
-            <div class="progress mb-3" style="height: 8px;">
-              <div class="progress-bar bg-info" style="width: {% widthratio m.score_usd 5 100 %}%"></div>
-            </div>
-          {% endif %}
-
-          <p class="mb-2"><strong>Recomendación:</strong> {{ m.recomendacion }}</p>
-          <p class="text-muted small mb-0">
-            Resultado de un modelo descriptivo basado en 30 clientes. Es un insumo para el asesor, no una decisión de inversión.
-          </p>
-        </div>
-      </div>
-      {% endwith %}
-    {% else %}
-      <p class="text-muted small mb-4">
-        Sin resultado del modelo para este cliente. Ejecuta <code>python scripts/correr_modelo.py</code>.
-      </p>
-    {% endif %}
-
-    <h2 class="h4 mt-4">Portafolio local (COP)</h2>
-    <div class="row">
-      <div class="col-lg-6">{{ grafico_cop_dona|safe }}</div>
-      <div class="col-lg-6">{{ grafico_cop_barras|safe }}</div>
-    </div>
-    <div class="table-responsive mb-5">
-      <table class="table table-sm table-striped bg-white">
-        <thead><tr><th>Macroactivo</th><th>Activo</th><th class="text-end">Valor (COP)</th><th class="text-end">Participación</th></tr></thead>
-        <tbody>
-          {% for f in local_detalle %}
-            <tr>
-              <td>{{ f.macroactivo }}</td>
-              <td>{{ f.activo }}</td>
-              <td class="text-end">{{ f.valor_cop|floatformat:"0g" }}</td>
-              <td class="text-end">{{ f.participacion_pct|floatformat:2 }} %</td>
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
-
-    <h2 class="h4 mt-4">Portafolio internacional (USD)</h2>
-    {% if actual.tiene_portafolio_usd %}
-      <div class="row">
-        <div class="col-lg-6">{{ grafico_usd_dona|safe }}</div>
-        <div class="col-lg-6">{{ grafico_usd_barras|safe }}</div>
-      </div>
-      <p class="text-muted small">La dona solo incluye saldos positivos; los negativos (por ejemplo, saldos deudores de liquidez) aparecen en la tabla.</p>
-      <div class="table-responsive mb-5">
-        <table class="table table-sm table-striped bg-white">
-          <thead><tr><th>Tipo</th><th>Activo</th><th class="text-end">Cantidad</th><th class="text-end">Valor (USD)</th><th class="text-end">Participación</th><th>Vence</th><th class="text-end">Cupón</th></tr></thead>
+      <div class="card mt-3"><div class="table-responsive">
+        <table class="table table-hover tabla align-middle mb-0">
+          <thead><tr><th>Macroactivo</th><th>Activo</th><th class="text-end">Valor (COP)</th><th class="text-end">Participación</th></tr></thead>
           <tbody>
-            {% for f in usd_detalle %}
-              <tr>
-                <td>{{ f.tipo_activo }}</td>
-                <td>{{ f.nombre_activo }}</td>
-                <td class="text-end">{{ f.cantidad|floatformat:"2g" }}</td>
-                <td class="text-end">{{ f.valor_usd|floatformat:"2g" }}</td>
-                <td class="text-end">{{ f.participacion_pct|floatformat:2 }} %</td>
-                <td>{{ f.fecha_vencimiento|date:"d/m/Y"|default:"-" }}</td>
-                <td class="text-end">{% if f.tasa_cupon %}{{ f.tasa_cupon|floatformat:3 }} %{% else %}-{% endif %}</td>
-              </tr>
+            {% for f in local_detalle %}
+              <tr><td>{{ f.macroactivo }}</td><td>{{ f.activo }}</td>
+                  <td class="text-end">{{ f.valor_cop|floatformat:"0g" }}</td>
+                  <td class="text-end">{{ f.participacion_pct|floatformat:1 }} %</td></tr>
             {% endfor %}
           </tbody>
         </table>
-      </div>
-    {% else %}
-      <div class="alert alert-info">Este cliente no tiene portafolio internacional en los datos entregados.</div>
-    {% endif %}
+      </div></div>
+    </div>
 
+    <div class="tab-pane fade" id="tab-usd">
+      {% if actual.tiene_portafolio_usd %}
+        <div class="row g-3">
+          <div class="col-lg-5"><div class="card h-100"><div class="card-body">{{ grafico_usd_dona|safe }}</div></div></div>
+          <div class="col-lg-7"><div class="card h-100"><div class="card-body">{{ grafico_usd_barras|safe }}</div></div></div>
+        </div>
+        <p class="text-muted small mt-2 mb-2">La dona solo incluye saldos positivos; los negativos (por ejemplo, saldos deudores de liquidez) aparecen en la tabla.</p>
+        <div class="card"><div class="table-responsive">
+          <table class="table table-hover tabla align-middle mb-0">
+            <thead><tr><th>Tipo</th><th>Activo</th><th class="text-end">Cantidad</th><th class="text-end">Valor (USD)</th><th class="text-end">Participación</th><th>Vence</th><th class="text-end">Cupón</th></tr></thead>
+            <tbody>
+              {% for f in usd_detalle %}
+                <tr><td>{{ f.tipo_activo }}</td><td>{{ f.nombre_activo }}</td>
+                    <td class="text-end">{{ f.cantidad|floatformat:"2g" }}</td>
+                    <td class="text-end">{{ f.valor_usd|floatformat:"2g" }}</td>
+                    <td class="text-end">{{ f.participacion_pct|floatformat:1 }} %</td>
+                    <td>{{ f.fecha_vencimiento|date:"d/m/Y"|default:"-" }}</td>
+                    <td class="text-end">{% if f.tasa_cupon %}{{ f.tasa_cupon|floatformat:3 }} %{% else %}-{% endif %}</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div></div>
+      {% else %}
+        <div class="alert alert-info mb-0">
+          {% if actual.id_truncado %}
+            No se puede verificar si este cliente tiene portafolio internacional: su identificador llegó truncado y no se puede cruzar con el archivo USD.
+          {% else %}
+            Este cliente no tiene portafolio internacional en los datos entregados.
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% else %}
+  {% if not error and not cliente_sel %}
+    <div class="card"><div class="card-body text-center py-5 text-muted">
+      <i class="bi bi-person-search fs-1 d-block mb-2"></i>
+      Elige un cliente para ver su portafolio y el análisis del modelo.
+    </div></div>
   {% endif %}
-</div>
-</body>
-</html>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+<script>
+  // Los gráficos dentro de pestañas ocultas se dibujan con ancho 0; se reajustan al mostrarlas.
+  document.querySelectorAll('button[data-bs-toggle="tab"]').forEach(function (b) {
+    b.addEventListener('shown.bs.tab', function () {
+      window.dispatchEvent(new Event('resize'));
+    });
+  });
+</script>
+{% endblock %}

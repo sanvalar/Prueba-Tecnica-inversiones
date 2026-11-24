@@ -7,6 +7,7 @@ DROP VIEW IF EXISTS v_reporte_calidad CASCADE;
 DROP VIEW IF EXISTS v_usd_limpio CASCADE;
 DROP VIEW IF EXISTS v_usd_rechazados CASCADE;
 DROP VIEW IF EXISTS v_usd_parseado CASCADE;
+DROP VIEW IF EXISTS v_mapa_id_truncado CASCADE;
 DROP VIEW IF EXISTS v_macro_limpio CASCADE;
 DROP VIEW IF EXISTS v_macro_rechazados CASCADE;
 DROP VIEW IF EXISTS v_macro_parseado CASCADE;
@@ -60,6 +61,16 @@ q AS (
 )
 SELECT
     q.*,
+    -- ID normalizado. Un ID truncado por Excel llega como '1.00114E+12' o, si alguien lo
+    -- "expande", como '100114000000000000' (ceros agregados, no son los dígitos reales).
+    -- Ambas formas se convierten en 'TRUNC-100114' (solo los dígitos significativos).
+    CASE
+        WHEN id_sistema_cliente ~ '^[0-9]\.[0-9]+E\+[0-9]+$'
+            THEN 'TRUNC-' || regexp_replace(replace(split_part(id_sistema_cliente, 'E+', 1), '.', ''), '0+$', '')
+        WHEN id_sistema_cliente ~ '^[0-9]{12,}$' AND id_sistema_cliente ~ '0{3}$'
+            THEN 'TRUNC-' || regexp_replace(id_sistema_cliente, '0+$', '')
+        ELSE id_sistema_cliente
+    END AS id_norm,
     COALESCE(
         fecha IS NOT NULL
         AND aba_cop IS NOT NULL
@@ -83,21 +94,78 @@ FROM v_macro_parseado
 WHERE NOT es_valida;
 
 
+---Etapa 3b
+-- Cruce opcional token truncado -> ID real. La clave es 'TRUNC-100114' o, para un token que
+-- esconde varios clientes, 'TRUNC-100114#1466' (ver scripts/exportar_ids_truncados.py).
+CREATE OR REPLACE VIEW v_mapa_id_truncado AS
+SELECT DISTINCT ON (upper(btrim(token))) upper(btrim(token)) AS clave, btrim(id_real) AS id_real
+FROM mapa_id_truncado
+WHERE btrim(id_real) ~ '^[0-9]{10,11}$'
+  AND upper(btrim(token)) LIKE 'TRUNC-%'
+ORDER BY upper(btrim(token));
+
+
 ---Etapa 4
 CREATE OR REPLACE VIEW v_macro_limpio AS
-WITH validas AS (
+WITH base AS (
     SELECT
-        fecha,
-        id_sistema_cliente                         AS cliente_id,
-        (POSITION('E+' IN id_sistema_cliente) > 0) AS id_truncado,
-        cod_activo,
-        aba_cop,
-        MAX(macroactivo)       AS macroactivo,
-        MAX(cod_perfil_riesgo) AS cod_perfil_riesgo,
-        MAX(cod_banca)         AS cod_banca
+        fecha, id_norm AS id_sistema_cliente, cod_activo, aba_cop,
+        macroactivo, cod_perfil_riesgo, cod_banca
     FROM v_macro_parseado
     WHERE es_valida
-    GROUP BY fecha, id_sistema_cliente, cod_activo, aba_cop
+),
+-- Un ID truncado por Excel (1.00114E+12) puede esconder a varios clientes. Si en una misma
+-- fecha el mismo ID truncado muestra más de un perfil de riesgo, son clientes distintos
+-- (un cliente tiene un solo perfil por fecha): se separan agregando "#perfil" al ID.
+tokens_agrupados AS (
+    SELECT DISTINCT id_sistema_cliente
+    FROM base
+    WHERE id_sistema_cliente LIKE 'TRUNC-%'
+      AND cod_perfil_riesgo IS NOT NULL
+    GROUP BY id_sistema_cliente, fecha
+    HAVING COUNT(DISTINCT cod_perfil_riesgo) > 1
+),
+perfil_por_activo AS (
+    SELECT DISTINCT ON (id_sistema_cliente, cod_activo)
+           id_sistema_cliente, cod_activo, cod_perfil_riesgo
+    FROM (
+        SELECT id_sistema_cliente, cod_activo, cod_perfil_riesgo, COUNT(*) AS n
+        FROM base
+        WHERE cod_perfil_riesgo IS NOT NULL
+        GROUP BY id_sistema_cliente, cod_activo, cod_perfil_riesgo
+    ) t
+    ORDER BY id_sistema_cliente, cod_activo, n DESC
+),
+validas0 AS (
+    SELECT
+        b.fecha,
+        CASE WHEN b.id_sistema_cliente IN (SELECT id_sistema_cliente FROM tokens_agrupados)
+             THEN b.id_sistema_cliente || '#'
+                  || COALESCE(b.cod_perfil_riesgo, pa.cod_perfil_riesgo, 'S')
+             ELSE b.id_sistema_cliente
+        END                                              AS cliente_id,
+        (b.id_sistema_cliente LIKE 'TRUNC-%')            AS id_truncado,
+        b.cod_activo,
+        b.aba_cop,
+        MAX(b.macroactivo)       AS macroactivo,
+        MAX(b.cod_perfil_riesgo) AS cod_perfil_riesgo,
+        MAX(b.cod_banca)         AS cod_banca
+    FROM base b
+    LEFT JOIN perfil_por_activo pa
+           ON pa.id_sistema_cliente = b.id_sistema_cliente
+          AND pa.cod_activo IS NOT DISTINCT FROM b.cod_activo
+    GROUP BY 1, 2, 3, b.cod_activo, b.aba_cop
+),
+-- Si Cibest entrega los IDs reales (tabla mapa_id_truncado), el token se reemplaza por el ID real
+-- y el cliente deja de estar marcado como truncado (y ya cruza con el portafolio USD).
+validas AS (
+    SELECT
+        v.fecha,
+        COALESCE(m.id_real, v.cliente_id)         AS cliente_id,
+        (v.id_truncado AND m.id_real IS NULL)     AS id_truncado,
+        v.cod_activo, v.aba_cop, v.macroactivo, v.cod_perfil_riesgo, v.cod_banca
+    FROM validas0 v
+    LEFT JOIN v_mapa_id_truncado m ON m.clave = v.cliente_id
 ),
 mapa_macro AS (
     SELECT DISTINCT ON (cod_activo) cod_activo, macroactivo

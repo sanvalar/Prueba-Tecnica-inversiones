@@ -1,0 +1,65 @@
+{% extends "portafolios/base.html" %}
+{% block titulo %}Oportunidades{% endblock %}
+
+{% block contenido %}
+<div class="mb-3">
+  <h1 class="h3 page-title mb-1">Oportunidades comerciales</h1>
+  <div class="text-muted">Clientes ordenados por patrimonio según qué tan coherente es su portafolio con su perfil de riesgo.</div>
+</div>
+
+{% if error %}
+  <div class="alert alert-warning">{{ error }}</div>
+{% else %}
+  <div class="row g-3 mb-4 row-cols-2 row-cols-lg-5">
+    <div class="col"><div class="card h-100 kpi"><div class="card-body">
+      <div class="card-title-sm">Clientes analizados</div>
+      <div class="value mt-1">{{ total }}</div>
+    </div></div></div>
+    {% for r in resumen %}
+      <div class="col"><a class="text-decoration-none text-reset" href="?estado={{ r.clave|urlencode }}"><div class="card h-100 kpi"><div class="card-body">
+        <div class="card-title-sm">{{ r.texto }}</div>
+        <div class="value mt-1">{{ r.n }}</div>
+        <span class="chip {{ r.clase }} mt-1">{% if r.clave == 'MÁS CONSERVADOR QUE SU PERFIL' %}Oportunidad comercial{% elif r.clave == 'MÁS RIESGOSO QUE SU PERFIL' %}Revisar exposición{% elif r.clave == 'ALINEADO' %}Sin acción{% else %}Completar perfil{% endif %}</span>
+      </div></div></a></div>
+    {% endfor %}
+  </div>
+
+  <div class="row g-3 mb-4">
+    <div class="col-lg-5"><div class="card h-100"><div class="card-body">{{ grafico_estados|safe }}</div></div></div>
+    <div class="col-lg-7"><div class="card h-100"><div class="card-body">{{ grafico_segmentos|safe }}</div></div></div>
+  </div>
+
+  <div class="d-flex flex-wrap gap-2 align-items-center mb-3 pill-filter">
+    <span class="text-muted me-1">Filtrar:</span>
+    <a href="{% url 'oportunidades' %}" class="btn btn-sm {% if not estado_sel %}btn-dark{% else %}btn-outline-secondary{% endif %}">Todos</a>
+    {% for r in resumen %}
+      <a href="?estado={{ r.clave|urlencode }}" class="btn btn-sm {% if estado_sel == r.clave %}btn-dark{% else %}btn-outline-secondary{% endif %}">{{ r.texto }} ({{ r.n }})</a>
+    {% endfor %}
+  </div>
+
+  <div class="card"><div class="table-responsive">
+    <table class="table table-hover tabla align-middle mb-0">
+      <thead><tr>
+        <th>Cliente</th><th>Banca</th><th>Perfil declarado</th><th>Perfil sugerido</th><th>Estado</th>
+        <th class="text-end">Riesgo COP</th><th class="text-end">Patrimonio COP</th><th>Recomendación</th>
+      </tr></thead>
+      <tbody>
+        {% for f in filas %}
+          <tr>
+            <td><a class="fw-semibold text-decoration-none" href="{% url 'portafolio' %}?cliente={{ f.cliente_id|urlencode }}">{{ f.etiqueta }}</a></td>
+            <td>{{ f.banca|default:"—" }}</td>
+            <td>{{ f.perfil_riesgo }}</td>
+            <td>{{ f.perfil_implicito }}</td>
+            <td><span class="chip {{ f.estado_clase }} text-nowrap">{{ f.estado_corto }}</span></td>
+            <td class="text-end">{{ f.score_cop|floatformat:1 }}</td>
+            <td class="text-end">{{ f.total_cop|floatformat:"0g" }}</td>
+            <td class="small text-muted" style="min-width:260px">{% for l in f.primera_recomendacion %}{{ l }}{% endfor %}</td>
+          </tr>
+        {% empty %}
+          <tr><td colspan="8" class="text-center text-muted py-4">No hay clientes en este estado.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div></div>
+{% endif %}
+{% endblock %}

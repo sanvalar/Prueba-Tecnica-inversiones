@@ -62,6 +62,48 @@ WHERE cliente_id = %(cliente)s
 ORDER BY valor_usd DESC
 """.strip(),
     },
+    {
+        "nombre": "modelo_cliente",
+        "titulo": "Resultado del modelo analitico por cliente",
+        "descripcion": "Segmento, perfil sugerido, estado frente al perfil declarado y recomendacion. Requiere haber ejecutado scripts/correr_modelo.py.",
+        "sql": """
+SELECT segmento, perfil_riesgo, perfil_implicito, estado_perfil,
+       score_cop, score_usd, recomendacion
+FROM resultado_modelo_cliente
+WHERE cliente_id = %(cliente)s
+""".strip(),
+    },
+    {
+        "nombre": "oportunidades",
+        "titulo": "Clientes con su resultado del modelo",
+        "descripcion": "Una fila por cliente con segmento, estado frente al perfil, patrimonio y recomendacion. Alimenta la pagina Oportunidades.",
+        "sql": """
+SELECT r.cliente_id, c.banca, c.id_truncado, r.segmento, r.perfil_riesgo,
+       r.perfil_implicito, r.estado_perfil, r.score_cop, r.score_usd,
+       c.total_cop, c.tiene_portafolio_usd, r.recomendacion
+FROM resultado_modelo_cliente r
+JOIN v_cliente_resumen c ON c.cliente_id = r.cliente_id
+ORDER BY c.total_cop DESC NULLS LAST, r.cliente_id
+""".strip(),
+    },
+    {
+        "nombre": "reporte_calidad",
+        "titulo": "Reporte de calidad de los datos",
+        "descripcion": "Filas crudas, rechazadas, duplicadas y limpias por tabla. Alimenta la pagina Calidad de datos.",
+        "sql": """
+SELECT tabla, filas_crudas, filas_rechazadas, duplicadas_removidas, filas_limpias
+FROM v_reporte_calidad
+""".strip(),
+    },
+    {
+        "nombre": "ids_truncados",
+        "titulo": "Clientes con identificador truncado",
+        "descripcion": "Cuantos clientes tienen el ID en notacion cientifica de Excel.",
+        "sql": """
+SELECT COUNT(*) FILTER (WHERE id_truncado) AS truncados, COUNT(*) AS clientes
+FROM v_cliente_resumen
+""".strip(),
+    },
 ]
 
 
